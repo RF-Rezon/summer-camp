@@ -77,7 +77,7 @@ const Nav = () => {
                       </li>
                       <li>
                         <a className="avatar" href="/">
-                          {user.photoURL && (
+                          {user?.photoURL && (
                             <div className="w-14 rounded-full">
                               <img src={user.photoURL} />
                             </div>

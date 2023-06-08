@@ -16,50 +16,33 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const updateHandler = () => {
-    Swal.fire({
-      icon: "success",
-      title: "Yeh!!..",
-      text: "Created Profile picture successfully",
-    });
-  };
-
-  const updateHandlerFailed = (error) => {
-    Swal.fire({
-      icon: "error",
-      title: "Ops!!..",
-      text: `Profile didn't update successfully.`,
-    });
-  };
-
-
   const onSubmit = (data) => {
     setInputData(data);
     const { name, email, password, confirm_password, photoURL } = inputData;
-    const nameObj = { name: name, email: email };
 
     if (password === confirm_password) {
       normalRegister(email, password)
         .then((userCredential) => {
-          const user = userCredential.user;
-          Swal.fire({
-            icon: "success",
-            title: "Success",
-            text: `Registered Sucessfully`,
-          });
-
-          // updateUser(name, photoURL)
-          //   .then(() => {
-          //     // axios.post("http://localhost:3000/users", nameObj).then((data) => updateHandler());
-          //     updateHandler()
-          //   })
-          //   .catch((error) => {
-          //     updateHandlerFailed(error);
-          //   });
+          updateUser(name, photoURL)
+            .then(
+             Swal.fire({
+                icon: "success",
+                title: "Ya!..",
+                text: `Profile update successfully.`
+              }),
+              navigate("/")
+            )
+            .catch((error) => {
+              Swal.fire({
+                icon: "error",
+                title: "Ops!!..",
+                text: `Profile didn't update successfully. ${error}`
+              });
+            });
 
           // TODO 2
           setErrorMsg("");
-          navigate("/");
+         
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -71,7 +54,6 @@ const Register = () => {
         });
     } else {
       setErrorMsg("Password Didn't Matched");
-      return;
     }
   };
   return (
@@ -166,7 +148,12 @@ const Register = () => {
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter password"
                 />
-                {errors.password && <span>The password should less than 6 characters. Don't have a capital letter. Don't have a special character</span>}
+                {errors.password && (
+                  <span>
+                    The password should less than 6 characters. Don't have a capital letter. Don't have a special
+                    character
+                  </span>
+                )}
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg
