@@ -28,7 +28,7 @@ const Add_A_Class = () => {
           Class Name
         </p>
         <div className="relative z-0 w-full mb-6 group">
-          <select {...register("classes")} className="select select-info w-full max-w-xs">
+          <select {...register("c_name")} className="select select-info w-full max-w-xs">
             <option value="english">English</option>
             <option value="japanese">Japanese</option>
             <option value="italian">Italian</option>
@@ -91,7 +91,7 @@ const Add_A_Class = () => {
         <div className="grid md:grid-cols-2 md:gap-6">
           <div className="relative z-0 w-full mb-6 group">
             <input
-              {...register("av_sits")}
+              {...register("av_seats")}
               type="number"
               id="floating_first_name"
               className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"

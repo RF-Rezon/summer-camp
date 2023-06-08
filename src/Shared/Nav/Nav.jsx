@@ -63,7 +63,7 @@ const Nav = () => {
                   </li>
 
                   <li>
-                    <a className="text-gray-500 transition hover:text-gray-500/75" href="/">
+                    <a className="text-gray-500 transition hover:text-gray-500/75" href="/classes">
                       Classes
                     </a>
                   </li>

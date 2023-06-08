@@ -9,6 +9,7 @@ import DashBoard from "../Pages/DashBoard";
 import ErrorPage from "../Pages/ErrorPage";
 import Instructors from "../Pages/Instructors";
 import My_Classes from "../Components/SideNavs/Instructor/My_Classes";
+import Classes from "../Pages/Classes";
 
 const Router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const Router = createBrowserRouter([
       {
         path: "/instructors",
         element: <Instructors />,
+      },
+      {
+        path: "/classes",
+        element: <Classes />,
       },
       {
         path: "/dashboard",
