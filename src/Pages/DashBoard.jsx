@@ -22,7 +22,7 @@ const DashBoard = () => {
               <Link to="add_a_class">Add A Class</Link>
             </li>
             <li>
-              <Link to="bookings">My Classes</Link>
+              <Link to="my_classes">My Classes</Link>
             </li>
             <li>
               <Link to="allusers">Manage Classes</Link>

@@ -3,11 +3,12 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../Components/Home/Home";
 import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
-import Add_A_Class from "../DashBoardPages/Add_A_Class";
+import Add_A_Class from "../Components/SideNavs/Instructor/Add_A_Class";
 import HomeLayout from "../Layout/HomeLayout/HomeLayout";
 import DashBoard from "../Pages/DashBoard";
 import ErrorPage from "../Pages/ErrorPage";
 import Instructors from "../Pages/Instructors";
+import My_Classes from "../Components/SideNavs/Instructor/My_Classes";
 
 const Router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const Router = createBrowserRouter([
           {
             path:"add_a_class",
             element: <Add_A_Class />
+          },
+          {
+            path:"my_classes",
+            element: <My_Classes />
           },
           {
             path:"*",

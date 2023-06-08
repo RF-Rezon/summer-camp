@@ -3,7 +3,7 @@ import axios from "axios";
 import React from "react";
 import Spninner from "../Utils/Spninner";
 
-const fetchedInstructors = async()=> {
+const fetchedInstructors = async()=> { 
     const res = await axios.get("http://localhost:3000/instructors");
    return res.data;
 }
