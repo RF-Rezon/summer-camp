@@ -28,9 +28,10 @@ const Register = () => {
     Swal.fire({
       icon: "error",
       title: "Ops!!..",
-      text: `Profile didn't update successfully. ${error}`,
+      text: `Profile didn't update successfully.`,
     });
   };
+
 
   const onSubmit = (data) => {
     setInputData(data);
@@ -165,12 +166,7 @@ const Register = () => {
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter password"
                 />
-                {errors.password && (
-                  <span>
-                    The password should less than 6 characters. Don't have a capital letter. Don't have a special
-                    characters.
-                  </span>
-                )}
+                {errors.password && <span>The password should less than 6 characters. Don't have a capital letter. Don't have a special character</span>}
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg
@@ -210,7 +206,6 @@ const Register = () => {
                   placeholder="Type password again"
                 />
                 {errors.confirm_password && <span>This field is required</span>}
-
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
