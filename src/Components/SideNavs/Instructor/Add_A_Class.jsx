@@ -1,12 +1,23 @@
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 import UseAuth from "../../../Hooks/useAuth";
 import Title from "../../../Utils/Title";
 
 const Add_A_Class = () => {
-   const {user} = UseAuth();
+    const {user} = UseAuth();
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    axios.post("http://localhost:3000/new_added_class", data)
+    .then(res=> {
+        Swal.fire({
+            icon: "success",
+            title: "Ya!..",
+            text: `Addeded class successfully.`
+          })
+    })
+};
 
   return (
     <div className="w-2/5">
@@ -50,7 +61,8 @@ const Add_A_Class = () => {
             placeholder=" "
        
             readOnly 
-            defaultValue={user?.displayName}
+            value={user?.displayName || ""}
+            // TODO: username sometimes dont rander
           />
           <label
             htmlFor="floating_repeat_password"
@@ -67,7 +79,7 @@ const Add_A_Class = () => {
             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             readOnly 
-            defaultValue={user?.email}
+            value={user?.email || ""}
           />
           <label
             htmlFor="floating_repeat_password"
