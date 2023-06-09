@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import UseAuth from "../Hooks/useAuth";
 import Spninner from "../Utils/Spninner";
 
-const fetchedInstructors = async () => {
+const fetchedNewAddedClass = async () => {
   const res = await axios.get("http://localhost:3000/new_added_class");
   return res.data;
 };
@@ -32,7 +32,7 @@ const Classes = () => {
       });
     }
   };
-  const { data: addedNewClasses, isLoading, refetch } = useQuery(["added_new_class"], fetchedInstructors);
+  const { data: addedNewClasses, isLoading, refetch } = useQuery(["added_new_class"], fetchedNewAddedClass);
 
   if (isLoading) return <Spninner />;
   return (

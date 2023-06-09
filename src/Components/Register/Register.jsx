@@ -17,6 +17,7 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    console.log(data)
     if (data?.password !== data?.confirm_password) {
       setErrorMsg("Password didn't match. Check Again");
       return;

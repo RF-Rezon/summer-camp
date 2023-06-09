@@ -1,5 +1,4 @@
 import axios from "axios";
-import { GoogleAuthProvider } from "firebase/auth";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
@@ -17,35 +16,33 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const provider = new GoogleAuthProvider();
-
-  const onSubmit = (data) => console.log(data);
 
   const handleGoogleLogin = () => {
     LoginWithGoogle()
       .then((result) => {
         const loggedUser = result.user;
-        const loggedUserObj = { name: loggedUser.displayName, email: loggedUser.email };
-        axios.post("http://localhost:3000/users", loggedUserObj).then(() => {
+        axios.post("http://localhost:3000/users", { name: loggedUser?.displayName, email: loggedUser?.email })
+        .then(() => {
           Swal.fire({
             icon: "success",
             title: "Ya!..",
-            text: `Sign in successfully with google.`,
+            text: `Sign in successfully with google.`
           }),
             navigate("/");
         });
       })
-      .catch((error) => {
+      .catch((err)=>{
         Swal.fire({
           icon: "error",
-          title: "OOps!..",
+          title: "Oops!..",
           text: `Sign in problem with google.`
         })
-      });
+      })
+     
   };
 
-  const handleSignIn = () => {
-    normalLogin()
+  const onSubmit = (data) => {
+    normalLogin(data?.email, data?.password)
       .then(() => {
         Swal.fire({
           icon: "success",
@@ -156,7 +153,6 @@ const Login = () => {
 
               <input
                 type="submit"
-                onClick={handleSignIn}
                 className="inline-block rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white cursor-pointer"
                 value="Sign In"
               />
