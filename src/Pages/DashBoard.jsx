@@ -1,8 +1,20 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import { Link, Outlet } from "react-router-dom";
+import UseAuth from "../Hooks/useAuth";
+
+
+const fetchFunction = async () => {
+  const {user} =  UseAuth();
+  // We are sending email to variry if the user is Instructor or not.
+  const res = await axios.get(`http://localhost:3000/users/instructor/${user?.email}`);
+  return res.data.instructor;
+}
 
 const DashBoard = () => {
-  const isAdmin = true;
-  //   2 const [isAdmin] = useAdmin();
+  const {user} =  UseAuth();
+  const {data: isInstructor} = useQuery(["isInstructor", user?.email], fetchFunction)
+
   return (
     <>
       <div className="drawer lg:drawer-open">
@@ -18,12 +30,12 @@ const DashBoard = () => {
             <li>
               <Link to="additem">My Enrolled Classes</Link>
             </li>
-            <li>
+           {isInstructor && <> <li>
               <Link to="add_a_class">Add A Class</Link>
             </li>
             <li>
               <Link to="my_classes">My Classes</Link>
-            </li>
+            </li></>}
             <li>
               <Link to="allusers">Manage Classes</Link>
             </li>

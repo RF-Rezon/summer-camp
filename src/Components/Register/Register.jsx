@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +7,6 @@ import UseAuth from "../../Hooks/useAuth";
 
 const Register = () => {
   const navigate = useNavigate();
-  const [inputData, setInputData] = useState({});
   const [errorMsg, setErrorMsg] = useState("");
   const { normalRegister, updateUser } = UseAuth();
   const {
@@ -17,44 +17,41 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    setInputData(data);
-    const { name, email, password, confirm_password, photoURL } = inputData;
-
-    if (password === confirm_password) {
-      normalRegister(email, password)
-        .then((userCredential) => {
-          updateUser(name, photoURL)
-            .then(
-             Swal.fire({
-                icon: "success",
-                title: "Ya!..",
-                text: `Profile update successfully.`
-              }),
-              navigate("/")
-            )
-            .catch((error) => {
-              Swal.fire({
-                icon: "error",
-                title: "Ops!!..",
-                text: `Profile didn't update successfully. ${error}`
-              });
-            });
-
-          // TODO 2
-          setErrorMsg("");
-         
-        })
-        .catch((error) => {
-          const errorMessage = error.message;
-          Swal.fire({
-            icon: "error",
-            title: "Ops!!..",
-            text: "Did't Register! Registration Problem",
-          });
-        });
-    } else {
-      setErrorMsg("Password Didn't Matched");
+    if (data?.password !== data?.confirm_password) {
+      setErrorMsg("Password didn't match. Check Again");
+      return;
     }
+    normalRegister(data?.email, data?.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        updateUser(data?.name, data?.photoURL)
+          .then(() => {
+            axios.post("http://localhost:3000/users", { name: data?.name, email: data?.email }).then((data) => {
+              if (data.data.insertedId) {
+                Swal.fire({
+                  icon: "success",
+                  title: "Ya!..",
+                  text: `Sign up successful.`,
+                }),
+                  navigate("/");
+              }
+            });
+          })
+          .catch((error) => {
+            Swal.fire({
+              icon: "error",
+              title: "OOps!..",
+              text: `Sign up failed.`,
+            });
+          });
+      })
+      .catch((error) => {
+        Swal.fire({
+          icon: "error",
+          title: "OOps!..",
+          text: `Sign up failed. Use a new email.`,
+        });
+      });
   };
   return (
     <div>
@@ -150,8 +147,8 @@ const Register = () => {
                 />
                 {errors.password && (
                   <span>
-                    The password should less than 6 characters. Don't have a capital letter. Don't have a special
-                    character
+                    The password should less than 6 characters. Don't use capital letters or even any special
+                    characters.
                   </span>
                 )}
 

@@ -1,57 +1,69 @@
+import axios from "axios";
 import { GoogleAuthProvider } from "firebase/auth";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
-import UseAuth from './../../Hooks/useAuth';
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import UseAuth from "./../../Hooks/useAuth";
 
 const Login = () => {
-    const {normalLogin, LoginWithGoogle} = UseAuth();
-    const {
-      register,
-      handleSubmit,
-      watch,
-      formState: { errors },
-    } = useForm();
+  const navigate = useNavigate();
+  const { normalLogin, LoginWithGoogle } = UseAuth();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
-    const provider = new GoogleAuthProvider();
-    
+  const provider = new GoogleAuthProvider();
+
   const onSubmit = (data) => console.log(data);
 
-  const handleGoogleLogin =()=>{
+  const handleGoogleLogin = () => {
     LoginWithGoogle()
-    .then((result) => {
-        // const credential = GoogleAuthProvider.credentialFromResult(result);
-        // const token = credential.accessToken;
-        // // The signed-in user info.
-        const user = result.user;
-      console.log(user, "Logged with google")
-      }).catch((error) => {
-        
-        const errorMessage = error.message;
-        console.log(errorMessage, "google log in error")
-        // // The email of the user's account used.
-        // const email = error.customData.email;
-        // // The AuthCredential type that was used.
-        // const credential = GoogleAuthProvider.credentialFromError(error);
-        // // ...
-      });
-  }
-
-  const handleSignIn =()=> {
-    normalLogin()
-       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user)
+      .then((result) => {
+        const loggedUser = result.user;
+        const loggedUserObj = { name: loggedUser.displayName, email: loggedUser.email };
+        axios.post("http://localhost:3000/users", loggedUserObj).then(() => {
+          Swal.fire({
+            icon: "success",
+            title: "Ya!..",
+            text: `Sign in successfully with google.`,
+          }),
+            navigate("/");
+        });
       })
       .catch((error) => {
-        const errorMessage = error.message;
-        console.log(errorMessage)
+        Swal.fire({
+          icon: "error",
+          title: "OOps!..",
+          text: `Sign in problem with google.`
+        })
       });
-  }
-  
-  const handleHide =()=> {
+  };
 
-  }
+  const handleSignIn = () => {
+    normalLogin()
+      .then(() => {
+        Swal.fire({
+          icon: "success",
+          title: "Ya!..",
+          text: `Sign in successfully.`,
+        }),
+          navigate("/");
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          title: "OOps!..",
+          text: `Sign in problem with Email And Password.`
+        })
+      });
+  };
+
+  const handleHide = () => {};
 
   return (
     <div>
@@ -102,14 +114,14 @@ const Login = () => {
 
               <div className="relative">
                 <input
-                type="password"
+                  type="password"
                   {...register("password")}
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter password"
                 />
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                  <svg 
+                  <svg
                     onClick={handleHide}
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4 text-gray-400"
@@ -133,7 +145,6 @@ const Login = () => {
                 </span>
               </div>
             </div>
-           
 
             <div className="flex items-center justify-between">
               <p className="text-sm text-gray-500">
@@ -151,12 +162,15 @@ const Login = () => {
               />
             </div>
           </form>
-          <div onClick={handleGoogleLogin} className="cursor-pointer bg-green-500 w-3/5 p-5 flex items-center justify-center my-7 mx-auto rounded-lg">
-              <div className="mx-auto"><FaGoogle fill="black"/></div>
+          <div
+            onClick={handleGoogleLogin}
+            className="cursor-pointer bg-green-500 w-3/5 p-5 flex items-center justify-center my-7 mx-auto rounded-lg"
+          >
+            <div className="mx-auto">
+              <FaGoogle fill="black" />
             </div>
+          </div>
         </div>
-
-        
 
         <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
           <img
