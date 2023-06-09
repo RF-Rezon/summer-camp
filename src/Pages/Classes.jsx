@@ -15,7 +15,9 @@ const Classes = () => {
   const { user } = UseAuth();
   const navigate = useNavigate();
 
-  const handleTakingClass = (av_seats) => {
+  const handleTakingClass = (specificClass) => {
+   const enrlS = (+specificClass?.enrolledStudents);
+    console.log(enrlS)
     if (!user) {
       Swal.fire({
         title: "NO LOGGED IN!",
@@ -29,6 +31,26 @@ const Classes = () => {
         if (result.isConfirmed) {
           navigate("/login");
         }
+      });
+    } else {
+      axios.post("http://localhost:3000/classTakenStudents", { email: user?.email , name: user?.displayName }).then((res) => {
+        Swal.fire({
+          title: `Hello! ${user.displayName}`,
+          text: "Do you want to take this class?",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Go to login page",
+        }).then((result) => {
+          if (result.isConfirmed) {
+
+            Swal.fire({
+              icon: "success",
+              title: "Wait a minute",
+              text: "Going to the payment page!..",
+            });
+          }
+        });
       });
     }
   };
@@ -51,23 +73,23 @@ const Classes = () => {
                 <span className="font-semibold text-2xl text-zinc-700">Class: </span>
                 <h2 className="card-title">{newSingleClass.c_name}</h2>
                 <span className="font-semibold text-2xl text-zinc-700">Instructor: </span>
-                <p>{newSingleClass.i_name}</p>
+                <p>{newSingleClass.name}</p>
                 <span className="font-semibold text-2xl text-zinc-700">Instructor Email: </span>
-                <p>{newSingleClass.i_email}</p>
+                <p>{newSingleClass.email}</p>
                 <span className="font-semibold text-2xl text-zinc-700">Available Seats: </span>
                 <p>{newSingleClass.av_seats}</p>
                 <span className="font-semibold text-2xl text-zinc-700">Price: </span>
                 <p>{newSingleClass.price}</p>
-                <span className="font-semibold text-2xl text-zinc-700">Status: </span>
-                <p>{newSingleClass.status}</p>
               </div>
               <figure className="h-full">
-                <img src={newSingleClass.c_photoURL} alt="instructor" className="h-full w-full object-cover" />
+                <img src={newSingleClass.photoURL} alt="instructor" className="h-full w-full object-cover" />
               </figure>
             </div>
             <button
-              className={newSingleClass.av_seats > 1 ? "btn btn-outline btn-accent" : "disabled"}
-              onClick={() => handleTakingClass(newSingleClass.av_seats)}
+              className={
+                newSingleClass.av_seats > 1 ? "btn btn-outline btn-accent" : "btn-disabled btn btn-outline btn-accent"
+              }
+              onClick={() => handleTakingClass(newSingleClass)}
             >
               Select
             </button>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyClassesBanner = ({ singleClass }) => {
+const MyClassesBanner = ({ singleClass,userCount }) => {
   const { av_seats, c_name, price, status } = singleClass;
   return (
     <div className="w-5/6 m-6">
@@ -20,7 +20,7 @@ const MyClassesBanner = ({ singleClass }) => {
           </h3>
           <h3 className="mt-0.5 text-lg font-medium text-gray-900">
             Total Enrolled Students:
-            <span className="ml-1">I DONT KNOW</span>
+            <span className="ml-1">{userCount.length}</span>
           </h3>
           <h3 className="mt-0.5 text-lg font-medium text-gray-900">Status: {status}</h3>
 
@@ -37,6 +37,7 @@ const MyClassesBanner = ({ singleClass }) => {
               <span className="whitespace-nowrap rounded-full text-white px-2.5 py-0.5 text-xs bg-red-600">Denied</span>
             )}
           </div>
+          {/* Feed back can be good or bad */}
           <div className="my-5 bg-slate-100 break-words max-h-52 rounded-md">
             <p className="text-base text-black  font-medium p-5">FEEDBACK</p>
           </div>
