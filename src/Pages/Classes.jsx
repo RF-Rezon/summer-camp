@@ -7,7 +7,7 @@ import UseAuth from "../Hooks/useAuth";
 import Spninner from "../Utils/Spninner";
 
 const fetchedNewAddedClass = async () => {
-  const res = await axios.get("http://localhost:3000/new_added_class");
+  const res = await axios.get("http://localhost:3000/newAddedClass");
   return res.data;
 };
 
@@ -29,15 +29,6 @@ const Classes = () => {
         if (result.isConfirmed) {
           navigate("/login");
         }
-      });
-    }
-    if (user) {
-      axios.post("http://localhost:3000/class_taken_students", user).then((res) => {
-        Swal.fire({
-          icon: "success",
-          title: "Ya!..",
-          text: `Taken Class Successfully.`,
-        });
       });
     }
   };

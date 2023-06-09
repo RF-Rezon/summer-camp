@@ -14,6 +14,7 @@ const useInstructor = () => {
             return res.data.instructor;
         }
     })
+    
     return [is_Instructor , is_Instructor_Loading];
     
 }
