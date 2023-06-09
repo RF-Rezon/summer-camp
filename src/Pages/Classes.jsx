@@ -27,8 +27,17 @@ const Classes = () => {
         confirmButtonText: "Go to login page",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/login")
+          navigate("/login");
         }
+      });
+    }
+    if (user) {
+      axios.post("http://localhost:3000/class_taken_students", user).then((res) => {
+        Swal.fire({
+          icon: "success",
+          title: "Ya!..",
+          text: `Taken Class Successfully.`,
+        });
       });
     }
   };
@@ -40,7 +49,13 @@ const Classes = () => {
       <div className="grid md:grid-cols-2 m-10">
         {addedNewClasses.map((newSingleClass) => (
           <div key={newSingleClass._id} className="h-3/4 m-7 flex flex-col items-center justify-center">
-            <div className={newSingleClass.av_seats > 1 ? "card glass md:card-side w-full m-5" : "card md:card-side w-full bg-red-500 m-5"}>
+            <div
+              className={
+                newSingleClass.av_seats > 1
+                  ? "card glass md:card-side w-full m-5"
+                  : "card md:card-side w-full bg-red-500 m-5"
+              }
+            >
               <div className="card-body">
                 <span className="font-semibold text-2xl text-zinc-700">Class: </span>
                 <h2 className="card-title">{newSingleClass.c_name}</h2>
@@ -59,7 +74,10 @@ const Classes = () => {
                 <img src={newSingleClass.c_photoURL} alt="instructor" className="h-full w-full object-cover" />
               </figure>
             </div>
-            <button className={newSingleClass.av_seats > 1 ? "btn btn-outline btn-accent" : "disabled"} onClick={() => handleTakingClass(newSingleClass.av_seats)}>
+            <button
+              className={newSingleClass.av_seats > 1 ? "btn btn-outline btn-accent" : "disabled"}
+              onClick={() => handleTakingClass(newSingleClass.av_seats)}
+            >
               Select
             </button>
           </div>

@@ -2,15 +2,16 @@ import { Link, Outlet } from "react-router-dom";
 import useAdmin from "../Hooks/useAdmin";
 import UseAuth from "../Hooks/useAuth";
 import useInstructor from "../Hooks/useInstructor";
+import Spninner from "../Utils/Spninner";
 
 const DashBoard = () => {
   const { user, loading } = UseAuth();
 
   const [is_Admin, is_Admin_Loading] = useAdmin();
-  const [is_Instructor] = useInstructor();
+  const [is_Instructor, is_Instructor_Loading] = useInstructor();
 
-  console.log(is_Admin);
-  console.log(is_Instructor);
+  if (is_Admin_Loading) return <Spninner/>
+  if (is_Instructor_Loading) return <Spninner/>
 
   return (
     <>
