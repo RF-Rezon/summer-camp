@@ -16,8 +16,19 @@ const Classes = () => {
   const navigate = useNavigate();
 
   const handleTakingClass = (specificClass) => {
-   const enrlS = (+specificClass?.enrolledStudents);
-    console.log(enrlS)
+    //  const enrlS = (+specificClass?.enrolledStudents);
+    //   console.log(enrlS)
+
+    const obj = {
+      email: user?.email,
+      name: user?.displayName,
+      className: specificClass?.c_name,
+      instructorName: specificClass?.name,
+      instructorEmail: specificClass?.email,
+      availableSeat: specificClass?.av_seats,
+      price: specificClass?.price,
+      classPhoto: specificClass?.photoURL,
+    };
     if (!user) {
       Swal.fire({
         title: "NO LOGGED IN!",
@@ -33,24 +44,23 @@ const Classes = () => {
         }
       });
     } else {
-      axios.post("http://localhost:3000/classTakenStudents", { email: user?.email , name: user?.displayName }).then((res) => {
-        Swal.fire({
-          title: `Hello! ${user.displayName}`,
-          text: "Do you want to take this class?",
-          showCancelButton: true,
-          confirmButtonColor: "#3085d6",
-          cancelButtonColor: "#d33",
-          confirmButtonText: "Go to login page",
-        }).then((result) => {
-          if (result.isConfirmed) {
-
+      Swal.fire({
+        title: `Hello! ${user.displayName}`,
+        text: "Do you want to take this class?",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios.post("http://localhost:3000/classTakenStudents", obj).then((res) => {
             Swal.fire({
               icon: "success",
-              title: "Wait a minute",
-              text: "Going to the payment page!..",
+              title: "You added this class",
+              text: "Check Dashboard!",
             });
-          }
-        });
+          });
+        }
       });
     }
   };
