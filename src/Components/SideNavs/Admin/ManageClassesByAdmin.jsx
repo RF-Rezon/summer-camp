@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import Spninner from "../../../Utils/Spninner";
 
 const fetchedNewAddedClass = async () => {
@@ -9,23 +9,39 @@ const fetchedNewAddedClass = async () => {
 };
 
 const ManageClassesByAdmin = () => {
-  const { data: allClasses, isLoading, refetch } = useQuery(["allClasses"], fetchedNewAddedClass);
+  const { data: allClasses, isLoading, refetch } = useQuery(
+    ["allClasses"],
+    fetchedNewAddedClass
+  );
+  
+  const [disabledButtons, setDisabledButtons] = useState([]);
+
   if (isLoading) return <Spninner />;
 
   const approveHandler = (singleClass) => {
     const userId = singleClass._id;
-    axios.patch(`http://localhost:3000/newAddedClass/approve/${userId}`).then((res) => { 
-      refetch();
-    });
-  };
-  const denyHandler = (singleClass) => {
-    const userId = singleClass._id;
-    axios.patch(`http://localhost:3000/newAddedClass/deny/${userId}`).then((res) => {
-      refetch();
-    });
+    axios
+      .patch(`http://localhost:3000/newAddedClass/approve/${userId}`)
+      .then((res) => {
+        refetch();
+        setDisabledButtons((prevDisabledButtons) => [...prevDisabledButtons, userId]);
+      });
   };
 
-  const feedbackHandler = () => {};
+  const denyHandler = (singleClass) => {
+    const userId = singleClass._id;
+    axios
+      .patch(`http://localhost:3000/newAddedClass/deny/${userId}`)
+      .then((res) => {
+        refetch();
+        setDisabledButtons((prevDisabledButtons) => [...prevDisabledButtons, userId]);
+      });
+  };
+
+  const feedbackHandler = (user) => {
+    console.log(user)
+  };
+
   return (
     <div>
       <div className="overflow-x-auto">
@@ -49,7 +65,7 @@ const ManageClassesByAdmin = () => {
                 <td>
                   <div className="avatar">
                     <div className="mask mask-squircle w-12 h-12">
-                      <img src={singleClass.photoURL} />
+                      <img src={singleClass.photoURL} alt="" />
                     </div>
                   </div>
                 </td>
@@ -73,17 +89,22 @@ const ManageClassesByAdmin = () => {
                     </span>
                   )}
                 </td>
-                <th className="flex flex-col">
+                <th className="flex flex-col gap-4">
                   <button
                     onClick={() => approveHandler(singleClass)}
+                    disabled={disabledButtons.includes(singleClass._id)}
                     className="btn btn-ghost btn-xs hover:bg-green-500"
                   >
                     Approve
                   </button>
-                  <button onClick={() => denyHandler(singleClass)} className="btn btn-ghost btn-xs  hover:bg-red-500">
+                  <button
+                    onClick={() => denyHandler(singleClass)}
+                    disabled={disabledButtons.includes(singleClass._id)}
+                    className="btn btn-ghost btn-xs  hover:bg-red-500"
+                  >
                     Deny
                   </button>
-                  <button
+                  <button 
                     onClick={() => feedbackHandler(singleClass)}
                     className="btn btn-ghost btn-xs  hover:bg-purple-500"
                   >

@@ -1,6 +1,6 @@
 import React from "react";
 
-const MyClassesBanner = ({ singleClass,userCount }) => {
+const MyClassesBanner = ({ singleClass, userCount }) => {
   const { av_seats, c_name, price, status } = singleClass;
   return (
     <div className="w-5/6 m-6">
@@ -25,16 +25,16 @@ const MyClassesBanner = ({ singleClass,userCount }) => {
           <h3 className="mt-0.5 text-lg font-medium text-gray-900">Status: {status}</h3>
 
           <div className="mt-4 flex flex-wrap gap-1">
-            {status === "pending" ? (
-              <span className="whitespace-nowrap rounded-full text-white px-2.5 py-0.5 text-xs bg-yellow-600">
-                Pending
-              </span>
-            ) : status === "approved" ? (
+            {status === "approved" ? (
               <span className="whitespace-nowrap rounded-full text-white px-2.5 py-0.5 text-xs bg-green-600">
                 Approved
               </span>
-            ) : status === "denied" (
+            ) : status === "denied" ? (
               <span className="whitespace-nowrap rounded-full text-white px-2.5 py-0.5 text-xs bg-red-600">Denied</span>
+            ) : (
+              <span className="whitespace-nowrap rounded-full text-white px-2.5 py-0.5 text-xs bg-yellow-600">
+                Pending
+              </span>
             )}
           </div>
           {/* Feed back can be good or bad */}
