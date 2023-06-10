@@ -21,14 +21,14 @@ const DashBoard = () => {
           <Outlet />
         </div>
         <div className="drawer-side ">
-          <ul className="menu p-4 w-80 h-full   text-base-content">
+          <ul className="menu p-4 w-60 h-full   text-base-content">
             {is_Admin ? (
               <div>
                 <li>
-                  <Link to="allusers">Manage Classes</Link>
+                  <Link to="manageClassesByAdmin">Manage Classes</Link>
                 </li>
                 <li>
-                  <Link to="userhome">Manage Users</Link>
+                  <Link to="manageUsersByAdmin">Manage Users</Link>
                 </li>
               </div>
             ) : is_Instructor ? (
@@ -43,10 +43,10 @@ const DashBoard = () => {
             ) : (
               <div>
                 <li>
-                  <Link to="adminhome">My selected Classes</Link>
+                  <Link to="userSelecetedClass">My selected Classes</Link>
                 </li>
                 <li>
-                  <Link to="additem">My Enrolled Classes</Link>
+                  <Link to="enrolledClasses">My Enrolled Classes</Link>
                 </li>
               </div>
             )}

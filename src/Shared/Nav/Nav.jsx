@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../../Hooks/useAuth";
 
 const Nav = () => {
   const { user, LogOut } = UseAuth();
+ const navigate = useNavigate();
 
   const handleLogOut = () => {
     Swal.fire({
@@ -22,7 +24,8 @@ const Nav = () => {
               icon: "success",
               title: "Success",
               text: `Logged Out Sucessfully`,
-            });
+            }),
+            navigate("/")
           })
           .catch((error) => {
             console.log("logged out problem", error);
