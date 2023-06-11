@@ -64,13 +64,16 @@ const Classes = () => {
       });
     }
   };
-  const { data: addedNewClasses, isLoading, refetch } = useQuery(["added_new_class"], fetchedNewAddedClass);
 
+  const { data: addedNewClasses = [], isLoading, refetch } = useQuery(["added_new_class"], fetchedNewAddedClass);
+
+  const filteredAprovedClasses = addedNewClasses.filter(singleCard => singleCard.status === "approved");
+ 
   if (isLoading) return <Spninner />;
   return (
     <div>
       <div className="grid md:grid-cols-2 m-10">
-        {addedNewClasses.map((newSingleClass) => (
+        {filteredAprovedClasses?.map((newSingleClass) => (
           <div key={newSingleClass._id} className="h-3/4 m-7 flex flex-col items-center justify-center">
             <div
               className={
