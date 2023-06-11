@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Light mode */
+.bg-primary {
+  background-color: #f8f9fa;
+}
+
+/* Dark mode */
+.dark .bg-primary {
+  background-color: #212529;
+}

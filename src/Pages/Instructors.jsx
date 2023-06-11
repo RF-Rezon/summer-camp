@@ -16,7 +16,7 @@ const Instructors = () => {
   if (isLoading) return <Spninner />
   return (
     <>
-      <div className="grid grid-cols-3 m-10">
+      <div className="grid md:grid-cols-3  m-10">
           {totalInstructors.map((singleInstructor) => (
             <div key={singleInstructor._id} className="h-3/4 m-7">
               <div className="card glass w-96">

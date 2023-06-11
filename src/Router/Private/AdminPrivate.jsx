@@ -8,7 +8,6 @@ import useAdmin from './../../Hooks/useAdmin';
 const AdminPrivate = ({ children }) => {
     const { user, loading } = UseAuth();
     const [isAdmin, isAdminLoading] = useAdmin();
-    const location = useLocation();
 
     if(loading || isAdminLoading){
         return <Spninner/>
