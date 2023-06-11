@@ -140,7 +140,7 @@ const Register = () => {
 
               <div className="relative">
                 <input
-                  {...register("password", { pattern: /^[a-z0-9]{1,6}$/ })}
+                  {...register("password", { pattern: /^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.{6,})/ })}
                   type="password"
                   required
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"

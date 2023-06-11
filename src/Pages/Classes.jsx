@@ -68,6 +68,8 @@ const Classes = () => {
   const { data: addedNewClasses = [], isLoading, refetch } = useQuery(["added_new_class"], fetchedNewAddedClass);
 
   const filteredAprovedClasses = addedNewClasses.filter(singleCard => singleCard.status === "approved");
+
+  console.log(filteredAprovedClasses)
  
   if (isLoading) return <Spninner />;
   return (

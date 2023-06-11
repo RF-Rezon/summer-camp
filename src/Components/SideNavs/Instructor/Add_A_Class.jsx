@@ -123,7 +123,7 @@ const Add_A_Class = () => {
               Price
             </label>
           </div>
-          <div className="hidden"><input type="number" {...register("enrolledStudents")} defaultValue="0" /></div>
+          <div className="hidden"><input type="number" {...register("enrolled")} defaultValue="0" /></div>
           <div className="relative z-0 w-full mb-6 group">
             <p className="font-medium">Status: </p>
             <input

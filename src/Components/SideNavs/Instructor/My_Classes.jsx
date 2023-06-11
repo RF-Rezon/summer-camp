@@ -7,11 +7,10 @@ import MyClassesBanner from "./MyClassesBanner";
 
 const My_Classes = () => {
    const [userCount, setUserCount] = useState([]);
-  const { user, loading } = UseAuth();
+  const { user} = UseAuth();
 
-  const { data: addedNewClasses, isLoading } = useQuery({
+  const { data: addedNewClasses = [], isLoading } = useQuery({
     queryKey: ["for_instructor"],
-    enabled: !loading,
     queryFn: async () => {
       const res = await axios.get(`http://localhost:3000/newAddedClass/${user.email}`);
       return res.data;

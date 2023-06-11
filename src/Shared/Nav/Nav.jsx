@@ -5,7 +5,8 @@ import UseAuth from "../../Hooks/useAuth";
 
 const Nav = () => {
   const { user, LogOut } = UseAuth();
- const navigate = useNavigate();
+  console.log(user);
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
     Swal.fire({
@@ -25,7 +26,7 @@ const Nav = () => {
               title: "Success",
               text: `Logged Out Sucessfully`,
             }),
-            navigate("/")
+              navigate("/");
           })
           .catch((error) => {
             console.log("logged out problem", error);

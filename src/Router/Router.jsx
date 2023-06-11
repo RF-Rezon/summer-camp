@@ -1,6 +1,6 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../Components/Home/Home";
+import Home from "../Pages/Home";
 import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
 import ManageClassesByAdmin from "../Components/SideNavs/Admin/ManageClassesByAdmin";
