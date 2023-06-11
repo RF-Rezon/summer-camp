@@ -79,7 +79,7 @@ const Register = () => {
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="enter your name"
                 />
-                {errors.name && <span>This field is required</span>}
+                {errors?.name && <span className="text-red-500 font-light">Name is required.</span>}
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg
@@ -112,7 +112,7 @@ const Register = () => {
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter email"
                 />
-                {errors.email && <span>This field is required</span>}
+                {errors?.email && <span className="text-red-500 font-light">Email field is required</span>}
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg
@@ -146,10 +146,10 @@ const Register = () => {
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter password"
                 />
-                {errors.password && (
-                  <span>
-                    The password should less than 6 characters. Don't use capital letters or even any special
-                    characters.
+                {errors?.password && (
+                  <span className="text-red-500 font-light">
+                    The password should not less than 6 characters. Use at least one capital letter and special
+                    character.
                   </span>
                 )}
 
@@ -190,7 +190,7 @@ const Register = () => {
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Type password again"
                 />
-                {errors.confirm_password && <span>This field is required</span>}
+                {errors?.confirm_password && <span className="text-red-500 font-light">Confirm Password field is required</span>}
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -228,7 +228,7 @@ const Register = () => {
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter photo url"
                 />
-                {errors.photoURL && <span>This field is required</span>}
+                {errors?.photoURL && <span className="text-red-500 font-light">This field is required too</span>}
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg

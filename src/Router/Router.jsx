@@ -1,6 +1,5 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Home from "../Pages/Home";
 import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
 import ManageClassesByAdmin from "../Components/SideNavs/Admin/ManageClassesByAdmin";
@@ -8,13 +7,17 @@ import Add_A_Class from "../Components/SideNavs/Instructor/Add_A_Class";
 import My_Classes from "../Components/SideNavs/Instructor/My_Classes";
 import User_Enrolled_Classes from "../Components/SideNavs/Student/User_Enrolled_Classes";
 import User_Selected_Class from "../Components/SideNavs/Student/User_Selected_Class";
+import Payment from "../Components/SideNavs/Student/payment";
 import HomeLayout from "../Layout/HomeLayout/HomeLayout";
 import Classes from "../Pages/Classes";
 import DashBoard from "../Pages/DashBoard";
 import ErrorPage from "../Pages/ErrorPage";
+import Home from "../Pages/Home";
 import Instructors from "../Pages/Instructors";
-import ManageUsersByAdmin from './../Components/SideNavs/Admin/ManageUsersByAdmin';
-import Payment from "../Components/SideNavs/Student/payment";
+import ManageUsersByAdmin from "./../Components/SideNavs/Admin/ManageUsersByAdmin";
+import AdminPrivate from "./Private/AdminPrivate";
+import InstructorPrivate from "./Private/InstructorPrivate";
+import StudentPrivate from "./Private/StudentPrivate";
 
 const Router = createBrowserRouter([
   {
@@ -44,40 +47,48 @@ const Router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <DashBoard />,
-        children:[
+        children: [
           {
-            path:"add_a_class",
-            element: <Add_A_Class />
+            path: "add_a_class",
+            element: <InstructorPrivate><Add_A_Class /></InstructorPrivate> ,
           },
           {
-            path:"my_classes",
-            element: <My_Classes />
+            path: "my_classes",
+            element: <InstructorPrivate><My_Classes /></InstructorPrivate> ,
           },
           {
-            path:"manageClassesByAdmin",
-            element: <ManageClassesByAdmin />
+            path: "manageClassesByAdmin",
+            element: (
+              <AdminPrivate>
+                <ManageClassesByAdmin />
+              </AdminPrivate>
+            ),
           },
           {
-            path:"manageUsersByAdmin",
-            element: <ManageUsersByAdmin />
+            path: "manageUsersByAdmin",
+            element: (
+              <AdminPrivate>
+                <ManageUsersByAdmin />
+              </AdminPrivate>
+            ),
           },
           {
-            path:"userSelecetedClass",
-            element: <User_Selected_Class />
+            path: "userSelecetedClass",
+            element: <StudentPrivate><User_Selected_Class /></StudentPrivate> ,
           },
           {
-            path:"enrolledClasses",
-            element: <User_Enrolled_Classes />
+            path: "enrolledClasses",
+            element: <StudentPrivate><User_Enrolled_Classes /></StudentPrivate> ,
           },
           {
-            path:"paymentPage",
-            element: <Payment/>
+            path: "paymentPage",
+            element: <Payment />,
           },
           {
-            path:"*",
-            element: <ErrorPage />
-          }
-        ]
+            path: "*",
+            element: <ErrorPage />,
+          },
+        ],
       },
     ],
   },

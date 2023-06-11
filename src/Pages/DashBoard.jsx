@@ -1,17 +1,17 @@
 import { Link, Outlet } from "react-router-dom";
-import useAdmin from "../Hooks/useAdmin";
 import UseAuth from "../Hooks/useAuth";
-import useInstructor from "../Hooks/useInstructor";
-import Spninner from "../Utils/Spninner";
 
 const DashBoard = () => {
   const { user, loading } = UseAuth();
 
-  const [is_Admin, is_Admin_Loading] = useAdmin();
-  const [is_Instructor, is_Instructor_Loading] = useInstructor();
+  // const [is_Admin, is_Admin_Loading] = useAdmin();
+  // const [is_Instructor, is_Instructor_Loading] = useInstructor();
 
-  if (is_Admin_Loading) return <Spninner/>
-  if (is_Instructor_Loading) return <Spninner/>
+  const is_Admin = true;
+  const is_Instructor = true;
+
+  // if (is_Admin_Loading) return <Spninner/>
+  // if (is_Instructor_Loading) return <Spninner/>
 
   return (
     <>
@@ -22,7 +22,7 @@ const DashBoard = () => {
         </div>
         <div className="drawer-side ">
           <ul className="menu p-4 w-60 h-full   text-base-content">
-            {is_Admin ? (
+            {/* {is_Admin ? (
               <div>
                 <li>
                   <Link to="manageClassesByAdmin">Manage Classes</Link>
@@ -49,28 +49,34 @@ const DashBoard = () => {
                   <Link to="enrolledClasses">My Enrolled Classes</Link>
                 </li>
               </div>
-            )}
+            )} */}
 
-            {/* <li>
-              <Link to="../">
-                <FaHome /> Home
-              </Link>
-            </li>
-            <li>
-              <Link to="/menu">
-                <FaHamburger /> Menu
-              </Link>
-            </li>
-            <li>
-              <Link to="shop">
-                <FaShoppingBag /> Shop
-              </Link>
-            </li>
-            <li>
-              <Link to="contact">
-                <FaVoicemail /> Contact
-              </Link>
-            </li> */}
+            <div>
+              <li>
+                <Link to="manageClassesByAdmin">Manage Classes</Link>
+              </li>
+              <li>
+                <Link to="manageUsersByAdmin">Manage Users</Link>
+              </li>
+            </div>
+
+            <div>
+              <li>
+                <Link to="add_a_class">Add A Class</Link>
+              </li>
+              <li>
+                <Link to="my_classes">My Classes</Link>
+              </li>
+            </div>
+
+            <div>
+              <li>
+                <Link to="userSelecetedClass">My selected Classes</Link>
+              </li>
+              <li>
+                <Link to="enrolledClasses">My Enrolled Classes</Link>
+              </li>
+            </div>
           </ul>
         </div>
       </div>
