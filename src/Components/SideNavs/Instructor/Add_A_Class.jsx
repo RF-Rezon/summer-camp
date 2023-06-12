@@ -41,11 +41,11 @@ const Add_A_Class = () => {
         </p>
         <div className="relative z-0 w-full mb-6 group">
           <select {...register("c_name")} className="select select-info w-full max-w-xs">
-            <option value="english">English</option>
-            <option value="japanese">Japanese</option>
-            <option value="italian">Italian</option>
-            <option value="french">French</option>
-            <option value="spanish">Spanish</option>
+            <option value="piano">Piano</option>
+            <option value="guiter">Guitar</option>
+            <option value="violin">Violin</option>
+            <option value="drums">Drums</option>
+            <option value="trombone">Trombone</option>
           </select>
         </div>
         <div className="relative z-0 w-full mb-6 group">
