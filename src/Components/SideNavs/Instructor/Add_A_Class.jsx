@@ -10,8 +10,11 @@ const Add_A_Class = () => {
     const {user} = UseAuth();
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
-    console.log(data)
-    axios.post("http://localhost:3000/newAddedClass", data)
+    const newObject = {
+      ...data ,
+      feedBack: ""
+    }
+    axios.post("http://localhost:3000/newAddedClass", newObject)
     .then(res=> {
         Swal.fire({
             icon: "success",

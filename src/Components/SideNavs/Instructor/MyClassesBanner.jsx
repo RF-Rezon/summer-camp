@@ -1,7 +1,7 @@
 import React from "react";
 
 const MyClassesBanner = ({ singleClass, userCount }) => {
-  const { av_seats, c_name, price, status, enrolled } = singleClass;
+  const { av_seats, c_name, price, status, enrolled, feedBack } = singleClass;
   console.log(singleClass)
   return (
     <div className="w-5/6 m-6">
@@ -25,7 +25,7 @@ const MyClassesBanner = ({ singleClass, userCount }) => {
           </h3>
           <h3 className="mt-0.5 text-lg font-medium text-gray-900">Status: {status}</h3>
 
-          <div className="mt-4 flex flex-wrap gap-1">
+          <div className="mt-4 flex flex-wrap gap-1 py-5">
             {status === "approved" ? (
               <span className="whitespace-nowrap rounded-full text-white px-2.5 py-0.5 text-xs bg-green-600">
                 Approved
@@ -39,9 +39,9 @@ const MyClassesBanner = ({ singleClass, userCount }) => {
             )}
           </div>
           {/* Feed back can be good or bad */}
-          <div className="my-5 bg-slate-100 break-words max-h-52 rounded-md">
-            <p className="text-base text-black  font-medium p-5">FEEDBACK</p>
-          </div>
+         {feedBack && <div className="my-5 bg-slate-100 break-words max-h-52 rounded-md">
+            <p className="text-base text-black  font-medium p-5">{feedBack}</p>
+          </div>}
           <button className="btn btn-neutral">Update</button>
         </div>
       </div>

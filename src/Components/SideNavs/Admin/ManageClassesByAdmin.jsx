@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
 import Spninner from "../../../Utils/Spninner";
+import "./popupbtn.css";
 
 const fetchedNewAddedClass = async () => {
   const res = await axios.get("http://localhost:3000/newAddedClass");
@@ -9,37 +10,44 @@ const fetchedNewAddedClass = async () => {
 };
 
 const ManageClassesByAdmin = () => {
-  const { data: allClasses, isLoading, refetch } = useQuery(
-    ["allClasses"],
-    fetchedNewAddedClass
-  );
-  
+  const [selectedItemId, setSelectedItemId] = useState(null);
+  const [inputValue, setInputValue] = useState("");
+
+  const { data: allClasses, isLoading, refetch } = useQuery(["allClasses"], fetchedNewAddedClass);
+
   const [disabledButtons, setDisabledButtons] = useState([]);
 
   if (isLoading) return <Spninner />;
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    console.log(`Submitted value for item ${selectedItemId}:`, inputValue);
+    setSelectedItemId(null);
+    setInputValue("");
+  };
+
+  const handleButtonClick = (itemId) => {
+    setSelectedItemId(itemId);
+  };
+
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
   const approveHandler = (singleClass) => {
     const userId = singleClass._id;
-    axios
-      .patch(`http://localhost:3000/newAddedClass/approve/${userId}`)
-      .then((res) => {
-        refetch();
-        setDisabledButtons((prevDisabledButtons) => [...prevDisabledButtons, userId]);
-      });
+    axios.patch(`http://localhost:3000/newAddedClass/approve/${userId}`).then((res) => {
+      refetch();
+      setDisabledButtons((prevDisabledButtons) => [...prevDisabledButtons, userId]);
+    });
   };
 
   const denyHandler = (singleClass) => {
     const userId = singleClass._id;
-    axios
-      .patch(`http://localhost:3000/newAddedClass/deny/${userId}`)
-      .then((res) => {
-        refetch();
-        setDisabledButtons((prevDisabledButtons) => [...prevDisabledButtons, userId]);
-      });
-  };
-
-  const feedbackHandler = (user) => {
-    console.log(user)
+    axios.patch(`http://localhost:3000/newAddedClass/deny/${userId}`).then((res) => {
+      refetch();
+      setDisabledButtons((prevDisabledButtons) => [...prevDisabledButtons, userId]);
+    });
   };
 
   return (
@@ -104,17 +112,31 @@ const ManageClassesByAdmin = () => {
                   >
                     Deny
                   </button>
-                  <button 
-                    onClick={() => feedbackHandler(singleClass)}
-                    className="btn btn-ghost btn-xs  hover:bg-purple-500"
-                  >
-                    Feedback
-                  </button>
+                  {/* <div>
+                    <button className="btn btn-ghost btn-xs  hover:bg-purple-500" onClick={handleButtonClick}>FeedBack</button>
+                    {showPopup && (
+                      <div className="popup">
+                        <form onSubmit={()=>handleFormSubmit(singleClass)} className="flex flex-col space-y-6">
+                          <textarea value={inputValue} onChange={handleInputChange} placeholder="Enter your text" />
+                          <button className="btn btn-ghost btn-xs w-3/5 mx-auto hover:bg-purple-500" type="submit">Submit</button>
+                        </form>
+                      </div>
+                    )}
+                  </div> */}
+                  <button onClick={() => handleButtonClick(singleClass.av_seats)}>Open Popup</button>
                 </th>
               </tr>
             ))}
           </tbody>
         </table>
+        {selectedItemId !== null && (
+          <div className="popup">
+            <form onSubmit={handleFormSubmit} className="flex flex-col space-y-6">
+              <textarea value={inputValue} onChange={handleInputChange} placeholder="Enter your text" />
+              <button className="btn btn-ghost btn-xs w-3/5 mx-auto hover:bg-purple-500" type="submit">Submit</button>
+            </form>
+          </div>
+        )}
       </div>
     </div>
   );
