@@ -1,4 +1,5 @@
 import React from "react";
+import PopularInstructors from "./PopularInstructors";
 
 const Home = () => {
   return (
@@ -50,6 +51,9 @@ const Home = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="mb-8"> 
+        <PopularInstructors/>
       </div>
     </div>
   );

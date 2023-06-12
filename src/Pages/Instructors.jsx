@@ -2,21 +2,26 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import Spninner from "../Utils/Spninner";
+const token = localStorage.getItem("access-token");
 
 const fetchedInstructors = async()=> { 
-    const res = await axios.get("http://localhost:3000/instructors");
+    const res = await axios.get("http://localhost:3000/instructors", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
    return res.data;
 }
 const Instructors = () => {
   const {
-    data: totalInstructors,
+    data: totalInstructors = [],
     isLoading
   } = useQuery(["teachers"], fetchedInstructors);
 
   if (isLoading) return <Spninner />
   return (
     <>
-      <div className="grid md:grid-cols-3  m-10">
+      <div className="grid md:grid-cols-3">
           {totalInstructors.map((singleInstructor) => (
             <div key={singleInstructor._id} className="h-3/4 m-7">
               <div className="card glass w-96">

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../../Hooks/useAuth";
 
+const token = localStorage.getItem("access-token");
 const Register = () => {
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState("");
@@ -17,7 +18,7 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data)
+    console.log(data);
     if (data?.password !== data?.confirm_password) {
       setErrorMsg("Password didn't match. Check Again");
       return;
@@ -27,16 +28,26 @@ const Register = () => {
         const user = userCredential.user;
         updateUser(data?.name, data?.photoURL)
           .then(() => {
-            axios.post("http://localhost:3000/users", { name: data?.name, email: data?.email }).then((data) => {
-              if (data.data.insertedId) {
-                Swal.fire({
-                  icon: "success",
-                  title: "Ya!..",
-                  text: `Sign up successful.`,
-                }),
-                  navigate("/");
-              }
-            });
+            axios
+              .post(
+                "http://localhost:3000/users",
+                { name: data?.name, email: data?.email },
+                {
+                  headers: {
+                    Authorization: `Bearer ${token}`,
+                  },
+                }
+              )
+              .then((data) => {
+                if (data.data.insertedId) {
+                  Swal.fire({
+                    icon: "success",
+                    title: "Ya!..",
+                    text: `Sign up successful.`,
+                  }),
+                    navigate("/");
+                }
+              });
           })
           .catch((error) => {
             Swal.fire({
@@ -190,7 +201,9 @@ const Register = () => {
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Type password again"
                 />
-                {errors?.confirm_password && <span className="text-red-500 font-light">Confirm Password field is required</span>}
+                {errors?.confirm_password && (
+                  <span className="text-red-500 font-light">Confirm Password field is required</span>
+                )}
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -5,6 +5,8 @@ import Swal from "sweetalert2";
 import UseAuth from "../../../Hooks/useAuth";
 import Title from "../../../Utils/Title";
 
+const token = localStorage.getItem("access-token");
+
 const Add_A_Class = () => {
 
     const {user} = UseAuth();
@@ -14,7 +16,12 @@ const Add_A_Class = () => {
       ...data ,
       feedBack: ""
     }
-    axios.post("http://localhost:3000/newAddedClass", newObject)
+    axios.post("http://localhost:3000/newAddedClass", newObject,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .then(res=> {
         Swal.fire({
             icon: "success",
@@ -25,7 +32,7 @@ const Add_A_Class = () => {
 };
 
   return (
-    <div className="w-2/5">
+    <div className="w-2/5 h-screen">
       <Title heading="Add Class" sHeading="You can add classes here" />
 
       <form onSubmit={handleSubmit(onSubmit)}>

@@ -3,8 +3,15 @@ import axios from "axios";
 import React from "react";
 import Spninner from "../../../Utils/Spninner";
 
+const token = localStorage.getItem("access-token");
+
 const fetchedNewAddedClass = async () => {
-  const res = await axios.get("http://localhost:3000/users");
+  const res = await axios.get("http://localhost:3000/users",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  } );
   return res.data;
 };
 
@@ -12,13 +19,23 @@ const ManageUsersByAdmin = () => {
 
   const makeAdminHandler = (singleUser) => {
     const userId = singleUser._id;
-    axios.patch(`http://localhost:3000/newAddedClass/makeadmin/${userId}`).then((res) => {
+    axios.patch(`http://localhost:3000/newAddedClass/makeadmin/${userId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
       refetch();
     });
   };
   const makeInstructorHandler = (singleUser) => {
     const userId = singleUser._id;
-    axios.patch(`http://localhost:3000/newAddedClass/makeinstructor/${userId}`).then((res) => {
+    axios.patch(`http://localhost:3000/newAddedClass/makeinstructor/${userId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
       refetch();
     });
   };
@@ -38,7 +55,7 @@ const ManageUsersByAdmin = () => {
   return (
     <div>
       <div>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto h-screen">
           <table className="table">
             {/* head */}
             <thead>

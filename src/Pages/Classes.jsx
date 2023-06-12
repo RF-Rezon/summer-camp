@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../Hooks/useAuth";
 import Spninner from "../Utils/Spninner";
+const token = localStorage.getItem("access-token");
 
 const fetchedNewAddedClass = async () => {
   const res = await axios.get("http://localhost:3000/newAddedClass");
@@ -53,7 +54,11 @@ const Classes = () => {
         confirmButtonText: "Yes",
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.post("http://localhost:3000/classTakenStudents", obj).then((res) => {
+          axios.post("http://localhost:3000/classTakenStudents", obj, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }).then((res) => {
             Swal.fire({
               icon: "success",
               title: "You added this class",

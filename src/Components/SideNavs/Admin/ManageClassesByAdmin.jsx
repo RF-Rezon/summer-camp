@@ -4,8 +4,15 @@ import React, { useState } from "react";
 import Spninner from "../../../Utils/Spninner";
 import "./popupbtn.css";
 
+const token = localStorage.getItem("access-token");
+
 const fetchedNewAddedClass = async () => {
-  const res = await axios.get("http://localhost:3000/newAddedClass");
+  const res = await axios.get("http://localhost:3000/newAddedClass",
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
   return res.data;
 };
 
@@ -21,9 +28,18 @@ const ManageClassesByAdmin = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(`Submitted value for item ${selectedItemId}:`, inputValue);
+    axios.patch(`http://localhost:3000/newAddedClass/feedBack/${selectedItemId}` , {feedBack: inputValue},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    } ).then((res) => {
+      refetch();
+      console.log(res.data)
+    });
     setSelectedItemId(null);
     setInputValue("");
+    console.log(selectedItemId)
   };
 
   const handleButtonClick = (itemId) => {
@@ -36,7 +52,12 @@ const ManageClassesByAdmin = () => {
 
   const approveHandler = (singleClass) => {
     const userId = singleClass._id;
-    axios.patch(`http://localhost:3000/newAddedClass/approve/${userId}`).then((res) => {
+    axios.patch(`http://localhost:3000/newAddedClass/approve/${userId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
       refetch();
       setDisabledButtons((prevDisabledButtons) => [...prevDisabledButtons, userId]);
     });
@@ -44,7 +65,12 @@ const ManageClassesByAdmin = () => {
 
   const denyHandler = (singleClass) => {
     const userId = singleClass._id;
-    axios.patch(`http://localhost:3000/newAddedClass/deny/${userId}`).then((res) => {
+    axios.patch(`http://localhost:3000/newAddedClass/deny/${userId}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }).then((res) => {
       refetch();
       setDisabledButtons((prevDisabledButtons) => [...prevDisabledButtons, userId]);
     });
@@ -52,7 +78,7 @@ const ManageClassesByAdmin = () => {
 
   return (
     <div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto h-screen">
         <table className="table">
           {/* head */}
           <thead>
@@ -123,7 +149,7 @@ const ManageClassesByAdmin = () => {
                       </div>
                     )}
                   </div> */}
-                  <button onClick={() => handleButtonClick(singleClass.av_seats)}>Open Popup</button>
+                  <button onClick={() => handleButtonClick(singleClass._id)}>Open Popup</button>
                 </th>
               </tr>
             ))}

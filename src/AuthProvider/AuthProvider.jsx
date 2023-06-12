@@ -47,14 +47,17 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
       setLoading(false);
-      // if (user) {
-      //   axios.post("http://localhost:3000/jwt", { email: user.email }).then((data) => {
-      //     localStorage.setItem("access-token", data.data.token);
-      //     setLoading(false);
-      //   });
-      // } else {
-      //   localStorage.removeItem("access-token");
-      // }
+    //   if(user){
+    //     axios.post('http://localhost:3000/jwt', {email: user.email})
+    //     .then(data =>{
+    //         // console.log(data.data.token)
+    //         localStorage.setItem('access-token', data.data.token)
+    //         setLoading(false);
+    //     })
+    // }
+    // else{
+    //     localStorage.removeItem('access-token')
+    // }
     });
 
     return () => {

@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "./../../Hooks/useAuth";
 
+
+const token = localStorage.getItem("access-token");
+
 const Login = () => {
   const navigate = useNavigate();
   const { normalLogin, LoginWithGoogle } = UseAuth();
@@ -21,14 +24,18 @@ const Login = () => {
     LoginWithGoogle()
       .then((result) => {
         const loggedUser = result.user;
-        axios.post("http://localhost:3000/users", { name: loggedUser?.displayName, email: loggedUser?.email })
+        axios.post("http://localhost:3000/users", { name: loggedUser?.displayName, email: loggedUser?.email }, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
         .then(() => {
           Swal.fire({
             icon: "success",
             title: "Ya!..",
             text: `Sign in successfully with google.`
           }),
-            navigate("/");
+            navigate("/dashboard");
         });
       })
       .catch((err)=>{
@@ -49,7 +56,7 @@ const Login = () => {
           title: "Ya!..",
           text: `Sign in successfully.`,
         }),
-          navigate("/");
+          navigate("/dashboard");
       })
       .catch(() => {
         Swal.fire({
