@@ -17,12 +17,12 @@ const PopularInstructors = () => {
       const popularTeachers =  totalInstructors.slice(0,6)
       return (
         <>
-          <div className="grid md:grid-cols-3">
+          <div className="grid md:grid-cols-3 mt-16">
               {popularTeachers.map((singleInstructor) => (
-                <div key={singleInstructor._id} className="h-3/4 m-7">
-                  <div className="card glass w-96">
+                <div key={singleInstructor._id} className="h-3/4 mb-10">
+                  <div className="glass w-96">
                     <div className="card-body">
-                      <h2 className="card-title">{singleInstructor.name}</h2>
+                      <h2 className="card-title text-gray-400">{singleInstructor.name}</h2>
                       <p>{singleInstructor.email}</p>
                     </div>
                     <figure className="h-72">

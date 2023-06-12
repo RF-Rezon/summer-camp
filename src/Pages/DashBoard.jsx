@@ -19,7 +19,7 @@ const DashBoard = () => {
           <Outlet />
         </div>
         <div className="drawer-side ">
-          <ul className="menu p-4 w-60 h-full   text-base-content">
+          <ul className="menu p-4 w-60 h-full  text-base-content">
             {is_Admin ? (
               <div>
                 <li>

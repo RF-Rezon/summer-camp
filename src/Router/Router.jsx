@@ -83,19 +83,15 @@ const Router = createBrowserRouter([
           {
             path: "paymentPage",
             element:  <Payment />,
-          },
-          {
-            path: "*",
-            element: <ErrorPage />,
           }
         ],
-      },
-      {
-        path: "*",
-        element: <ErrorPage/>
       }
     ],
   },
+  {
+    path: "*",
+    element: <ErrorPage/>
+  }
 ]);
 
 export default Router;

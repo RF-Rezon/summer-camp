@@ -76,13 +76,13 @@ const ManageUsersByAdmin = () => {
                   <th className="flex flex-col gap-4">
                     <button
                       onClick={() => makeAdminHandler(singleUser)}
-                      className="btn btn-ghost btn-xs hover:bg-green-500"
+                      className="btn btn-ghost btn-xs hover:bg-green-500 hover:text-black"
                     >
                       Make Admin
                     </button>
                     <button
                       onClick={() => makeInstructorHandler(singleUser)}
-                      className="btn btn-ghost btn-xs  hover:bg-purple-500"
+                      className="btn btn-ghost btn-xs  hover:bg-purple-500 hover:text-black"
                     >
                       Make Instructor
                     </button>

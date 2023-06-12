@@ -127,29 +127,18 @@ const ManageClassesByAdmin = () => {
                   <button
                     onClick={() => approveHandler(singleClass)}
                     disabled={disabledButtons.includes(singleClass._id)}
-                    className="btn btn-ghost btn-xs hover:bg-green-500"
+                    className="btn btn-ghost btn-xs hover:bg-green-500 hover:text-black"
                   >
                     Approve
                   </button>
                   <button
                     onClick={() => denyHandler(singleClass)}
                     disabled={disabledButtons.includes(singleClass._id)}
-                    className="btn btn-ghost btn-xs  hover:bg-red-500"
+                    className="btn btn-ghost btn-xs  hover:bg-red-500 hover:text-black"
                   >
                     Deny
                   </button>
-                  {/* <div>
-                    <button className="btn btn-ghost btn-xs  hover:bg-purple-500" onClick={handleButtonClick}>FeedBack</button>
-                    {showPopup && (
-                      <div className="popup">
-                        <form onSubmit={()=>handleFormSubmit(singleClass)} className="flex flex-col space-y-6">
-                          <textarea value={inputValue} onChange={handleInputChange} placeholder="Enter your text" />
-                          <button className="btn btn-ghost btn-xs w-3/5 mx-auto hover:bg-purple-500" type="submit">Submit</button>
-                        </form>
-                      </div>
-                    )}
-                  </div> */}
-                  <button onClick={() => handleButtonClick(singleClass._id)}>Open Popup</button>
+                  <button className="btn btn-ghost btn-xs  hover:bg-blue-500 hover:text-black" onClick={() => handleButtonClick(singleClass._id)}>Feed Back</button>
                 </th>
               </tr>
             ))}

@@ -1,10 +1,12 @@
 import React from "react";
+import Title from "../Utils/Title";
+import HomeExtra from "./HomeExtra";
 import PopularInstructors from "./PopularInstructors";
 
 const Home = () => {
   return (
     <div>
-      <div className="my-8">
+      <div className="my-8 mt-12">
         <div className="carousel w-full">
           <div id="slide1" className="carousel-item relative w-full">
             <img src="https://i.ibb.co/WKkdzxb/Black-White-Simple-Music-Channel-Youtube-Banner.png" className="w-full" />
@@ -53,7 +55,12 @@ const Home = () => {
         </div>
       </div>
       <div className="mb-8"> 
+        <Title heading="Our" sHeading="Popular Instructors"/>
         <PopularInstructors/>
+      </div>
+      <div className="mb-8">
+       <Title heading="Some" sHeading="Students Reviews"/>
+        <HomeExtra/>
       </div>
     </div>
   );

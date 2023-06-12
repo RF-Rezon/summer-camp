@@ -1,17 +1,19 @@
 import React from "react";
-import { RotatingTriangles } from "react-loader-spinner";
+import { Puff } from "react-loader-spinner";
 
 const Spninner = () => {
   return (
     <div>
-      <div className="flex items-center justify-center">
-        <RotatingTriangles
-          visible={true}
-          height="80"
-          width="80"
-          ariaLabel="rotating-triangels-loading"
+      <div className="flex items-center justify-center p-40">
+        <Puff
+          height="100"
+          width="100"
+          radius={1}
+          color="#ffff"
+          ariaLabel="puff-loading"
           wrapperStyle={{}}
-          wrapperClass="rotating-triangels-wrapper"
+          wrapperClass=""
+          visible={true}
         />
       </div>
     </div>

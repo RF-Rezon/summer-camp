@@ -3,11 +3,11 @@ import React from "react";
 const ErrorPage = () => {
   return (
     <div>
-      <div className="flex flex-col h-screen bg-white">
+      <div className="flex flex-col h-screen bg-zinc-900">
         <img
-          src="https://media.istockphoto.com/id/1457889029/photo/group-of-food-with-high-content-of-dietary-fiber-arranged-side-by-side.jpg?b=1&s=612x612&w=0&k=20&c=BON5S0uDJeCe66N9klUEw5xKSGVnFhcL8stPLczQd_8="
+          src="https://i.ibb.co/f9mVVFy/5ddb9f0f3e748d667f8829a1547252b1.png"
           alt=""
-          className="object-cover w-full h-64"
+          className="object-cover w-full h-1/2"
         />
 
         <div className="flex items-center justify-center flex-1">
@@ -18,7 +18,7 @@ const ErrorPage = () => {
 
             <a
               href="/"
-              className="inline-block px-5 py-3 mt-6 text-sm font-medium text-white bg-indigo-600 rounded hover:bg-indigo-700 focus:outline-none focus:ring"
+              className="inline-block px-5 py-3 mt-6 text-sm font-medium text-white bg-teal-600 rounded hover:bg-teal-700 focus:outline-none focus:ring"
             >
               Go Back Home Page
             </a>

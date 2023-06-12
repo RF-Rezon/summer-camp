@@ -85,20 +85,20 @@ const Classes = () => {
             <div
               className={
                 newSingleClass.av_seats > 1
-                  ? "card glass md:card-side w-full m-5"
-                  : "card md:card-side w-full bg-red-500 m-5"
+                  ? "card rounded-none glass md:card-side w-full m-5"
+                  : "card rounded-none md:card-side w-full bg-red-500 m-5"
               }
             >
               <div className="card-body">
-                <span className="font-semibold text-2xl text-zinc-700">Class: </span>
+                <span className="font-semibold text-2xl text-zinc-300">Class: </span>
                 <h2 className="card-title">{newSingleClass.c_name}</h2>
-                <span className="font-semibold text-2xl text-zinc-700">Instructor: </span>
+                <span className="font-semibold text-2xl text-zinc-300">Instructor: </span>
                 <p>{newSingleClass.name}</p>
-                <span className="font-semibold text-2xl text-zinc-700">Instructor Email: </span>
+                <span className="font-semibold text-2xl text-zinc-300">Instructor Email: </span>
                 <p>{newSingleClass.email}</p>
-                <span className="font-semibold text-2xl text-zinc-700">Available Seats: </span>
+                <span className="font-semibold text-2xl text-zinc-300">Available Seats: </span>
                 <p>{newSingleClass.av_seats}</p>
-                <span className="font-semibold text-2xl text-zinc-700">Price: </span>
+                <span className="font-semibold text-2xl text-zinc-300">Price: </span>
                 <p>{newSingleClass.price}</p>
               </div>
               <figure className="h-full">

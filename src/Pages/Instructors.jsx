@@ -23,8 +23,8 @@ const Instructors = () => {
     <>
       <div className="grid md:grid-cols-3">
           {totalInstructors.map((singleInstructor) => (
-            <div key={singleInstructor._id} className="h-3/4 m-7">
-              <div className="card glass w-96">
+            <div key={singleInstructor._id} className="h-3/4 mb-20">
+              <div className="glass w-96">
                 <div className="card-body">
                   <h2 className="card-title">{singleInstructor.name}</h2>
                   <p>{singleInstructor.email}</p>
