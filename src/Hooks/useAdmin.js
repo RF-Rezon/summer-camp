@@ -11,7 +11,7 @@ const useAdmin = () => {
     queryKey: ["isAdmin", user?.email],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:3000/users/admin/${user?.email}`, {
+      const res = await axios.get(`https://summerproject.vercel.app/users/admin/${user?.email}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

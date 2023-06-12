@@ -6,7 +6,7 @@ import Spninner from "../../../Utils/Spninner";
 const token = localStorage.getItem("access-token");
 
 const fetchedNewAddedClass = async () => {
-  const res = await axios.get("http://localhost:3000/users",
+  const res = await axios.get("https://summerproject.vercel.app/users",
   {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -19,7 +19,7 @@ const ManageUsersByAdmin = () => {
 
   const makeAdminHandler = (singleUser) => {
     const userId = singleUser._id;
-    axios.patch(`http://localhost:3000/newAddedClass/makeadmin/${userId}`,
+    axios.patch(`https://summerproject.vercel.app/newAddedClass/makeadmin/${userId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -30,7 +30,7 @@ const ManageUsersByAdmin = () => {
   };
   const makeInstructorHandler = (singleUser) => {
     const userId = singleUser._id;
-    axios.patch(`http://localhost:3000/newAddedClass/makeinstructor/${userId}`,
+    axios.patch(`https://summerproject.vercel.app/newAddedClass/makeinstructor/${userId}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -47,7 +47,6 @@ const ManageUsersByAdmin = () => {
   // };
 
   // funs().then(res=> {
-  //   console.log(res)
   // })
 
 

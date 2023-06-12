@@ -1,8 +1,7 @@
 import React from "react";
 
 const MyClassesBanner = ({ singleClass, userCount }) => {
-  const { av_seats, c_name, price, status, enrolled, feedBack } = singleClass;
-  console.log(singleClass)
+  const { av_seats, c_name, price, status,  feedBack } = singleClass;
   return (
     <div className="w-5/6 m-6 h-screen">
       <div className="w-full rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition [animation-duration:_6s] hover:shadow-sm">
@@ -21,7 +20,7 @@ const MyClassesBanner = ({ singleClass, userCount }) => {
           </h3>
           <h3 className="mt-0.5 text-lg font-medium text-gray-900">
             Total Enrolled Students:
-            <span className="ml-1">{enrolled + 1}</span>
+            <span className="ml-1">0</span>
           </h3>
           <h3 className="mt-0.5 text-lg font-medium text-gray-900">Status: {status}</h3>
 

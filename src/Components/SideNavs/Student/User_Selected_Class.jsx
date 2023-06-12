@@ -3,15 +3,17 @@ import axios from "axios";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import UseAuth from "../../../Hooks/useAuth";
 const token = localStorage.getItem("access-token");
 
 const User_Selected_Class = () => {
+  const {user} = UseAuth();
     const navigate = useNavigate();
 
   const { data: singleCardData = [], isLoading, refetch } = useQuery({
     queryKey: ["takenSingleCourse"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:3000/classTakenStudents",
+      const res = await axios.get(`https://summerproject.vercel.app/classTakenStudents/${user.email}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -23,7 +25,7 @@ const User_Selected_Class = () => {
 
   const deleteHandler = (singleCourse) => {
     const id = singleCourse._id;
-    axios.delete(`http://localhost:3000/classTakenStudents/delete/${id}`,
+    axios.delete(`https://summerproject.vercel.app/classTakenStudents/delete/${id}`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

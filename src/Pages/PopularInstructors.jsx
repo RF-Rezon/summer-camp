@@ -4,7 +4,7 @@ import React from 'react';
 import Spninner from '../Utils/Spninner';
 
 const fetchedInstructors = async()=> { 
-    const res = await axios.get("http://localhost:3000/instructors");
+    const res = await axios.get("https://summerproject.vercel.app/instructors");
    return res.data;
 }
 const PopularInstructors = () => {

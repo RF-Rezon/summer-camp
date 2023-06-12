@@ -1,15 +1,3 @@
-// /** @type {import('tailwindcss').Config} */
-// export default {
-//   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-//   theme: {
-//     extend: {},
-//   },
-//   daisyui: {
-//     themes: ["emerald", "lemonade"],
-//   },
-//   plugins: [require("daisyui")],
-//   darkMode: 'class',
-// };
 
 
 export default {
@@ -17,6 +5,9 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {},
+    fontFamily: {
+      body: ['Arial', 'sans-serif'],
+    },
   },
   variants: {
     extend: {},

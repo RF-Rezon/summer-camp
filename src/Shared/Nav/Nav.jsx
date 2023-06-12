@@ -28,7 +28,6 @@ const Nav = () => {
               navigate("/");
           })
           .catch((error) => {
-            console.log("logged out problem", error);
           });
       }
     });

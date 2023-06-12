@@ -8,7 +8,7 @@ import Spninner from "../Utils/Spninner";
 const token = localStorage.getItem("access-token");
 
 const fetchedNewAddedClass = async () => {
-  const res = await axios.get("http://localhost:3000/newAddedClass");
+  const res = await axios.get("https://summerproject.vercel.app/newAddedClass");
   return res.data;
 };
 
@@ -18,7 +18,6 @@ const Classes = () => {
 
   const handleTakingClass = (specificClass) => {
     //  const enrlS = (+specificClass?.enrolledStudents);
-    //   console.log(enrlS)
 
     const obj = {
       email: user?.email,
@@ -54,11 +53,7 @@ const Classes = () => {
         confirmButtonText: "Yes",
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.post("http://localhost:3000/classTakenStudents", obj, {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }).then((res) => {
+          axios.post("https://summerproject.vercel.app/classTakenStudents", obj).then((res) => {
             Swal.fire({
               icon: "success",
               title: "You added this class",
@@ -73,8 +68,7 @@ const Classes = () => {
   const { data: addedNewClasses = [], isLoading, refetch } = useQuery(["added_new_class"], fetchedNewAddedClass);
 
   const filteredAprovedClasses = addedNewClasses.filter(singleCard => singleCard.status === "approved");
-
-  console.log(filteredAprovedClasses)
+ 
  
   if (isLoading) return <Spninner />;
   return (

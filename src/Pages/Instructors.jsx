@@ -5,7 +5,7 @@ import Spninner from "../Utils/Spninner";
 const token = localStorage.getItem("access-token");
 
 const fetchedInstructors = async()=> { 
-    const res = await axios.get("http://localhost:3000/instructors", {
+    const res = await axios.get("https://summerproject.vercel.app/instructors", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

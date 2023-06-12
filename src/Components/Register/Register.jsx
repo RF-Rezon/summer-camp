@@ -18,7 +18,6 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     if (data?.password !== data?.confirm_password) {
       setErrorMsg("Password didn't match. Check Again");
       return;
@@ -30,7 +29,7 @@ const Register = () => {
           .then(() => {
             axios
               .post(
-                "http://localhost:3000/users",
+                "https://summerproject.vercel.app/users",
                 { name: data?.name, email: data?.email },
                 {
                   headers: {
@@ -70,7 +69,7 @@ const Register = () => {
       <section className="relative flex flex-wrap lg:h-screen lg:items-center">
         <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-lg text-center">
-            <h1 className="text-2xl font-bold text-white sm:text-3xl">Get started today!</h1>
+            <h1 className="text-2xl font-bold text-white sm:text-3xl">REGISTER</h1>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mb-0 mt-8 max-w-md space-y-4">
