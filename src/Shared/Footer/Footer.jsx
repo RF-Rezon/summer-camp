@@ -20,8 +20,6 @@ const Footer = () => {
                 <span className="hidden h-1 w-10 rounded bg-teal-500 lg:block"></span>
 
                 <div>
-                  <h2 className="text-2xl font-medium text-gray-900">Request a Demo</h2>
-
                   <p className="mt-4 max-w-lg text-gray-400">If you have any confusion, please email us</p>
                 </div>
 
@@ -48,10 +46,9 @@ const Footer = () => {
             </div>
 
             <div className="py-8 lg:py-16 lg:pe-16">
-    
               <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-3">
                 <div>
-                  <p className="font-medium text-gray-900">Services</p>
+                  <p className="font-medium text-gray-300">Services</p>
 
                   <ul className="mt-6 space-y-4 text-sm">
                     <li>
@@ -87,7 +84,7 @@ const Footer = () => {
                 </div>
 
                 <div>
-                  <p className="font-medium text-gray-900">Company</p>
+                  <p className="font-medium text-gray-300">Company</p>
 
                   <ul className="mt-6 space-y-4 text-sm">
                     <li>
@@ -111,7 +108,7 @@ const Footer = () => {
                 </div>
 
                 <div>
-                  <p className="font-medium text-gray-900">Helpful Links</p>
+                  <p className="font-medium text-gray-300">Helpful Links</p>
 
                   <ul className="mt-6 space-y-4 text-sm">
                     <li>
