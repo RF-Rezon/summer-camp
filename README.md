@@ -3,12 +3,11 @@
 
 # Features
 
-- Three charecters can role play this website. Admin, Instructor, Normal user.
-- New User can Sign up.
-- User can Log in. Admin can make them instructor or even an admin also!
-- It has some private route. Admin cannot visit the user dashboard, similarly the others. 
+- Three characters can role-play this website. Admin, Instructor, Normal user.
+- New Users can Sign up.
+- User can Log in. Admin can make them instructors or even an admin!
+- It has some private routes. Admin cannot visit the user dashboard, similarly to the others. 
 - It has a nice cool black theme. You can use the gradient theme also.
-- User can take classes, by paying. 
 
 
 # Technology Used
@@ -16,8 +15,8 @@
 - React 
 - Node
 - Express
-- MongoDb 
-- And many third party librabies form node package maneger (NPM)
+- MongoDB 
+- And many third-party libraries form node package managers (NPM)
 
 
 # Live website 
