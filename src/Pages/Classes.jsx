@@ -1,20 +1,20 @@
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../Hooks/useAuth";
 import Spninner from "../Utils/Spninner";
 const token = localStorage.getItem("access-token");
 
-const fetchedNewAddedClass = async () => {
-  const res = await axios.get("https://summerproject.vercel.app/newAddedClass");
-  return res.data;
-};
-
 const Classes = () => {
-  const { user } = UseAuth();
+  const { user, webUrl } = UseAuth();
   const navigate = useNavigate();
+
+  const fetchedNewAddedClass = async () => {
+    const res = await axios.get(`${webUrl}/newAddedClass`);
+    return res?.data;
+  };
 
   const handleTakingClass = (specificClass) => {
     //  const enrlS = (+specificClass?.enrolledStudents);
@@ -53,7 +53,7 @@ const Classes = () => {
         confirmButtonText: "Yes",
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.post("https://summerproject.vercel.app/classTakenStudents", obj).then((res) => {
+          axios.post(`${webUrl}/classTakenStudents`, obj).then((res) => {
             Swal.fire({
               icon: "success",
               title: "You added this class",
@@ -65,17 +65,25 @@ const Classes = () => {
     }
   };
 
-  const { data: addedNewClasses = [], isLoading, refetch } = useQuery(["added_new_class"], fetchedNewAddedClass);
+  const {
+    data: addedNewClasses = [],
+    isLoading,
+    refetch,
+  } = useQuery(["added_new_class"], fetchedNewAddedClass);
 
-  const filteredAprovedClasses = addedNewClasses.filter(singleCard => singleCard.status === "approved");
- 
- 
+  const filteredAprovedClasses = addedNewClasses.filter(
+    (singleCard) => singleCard.status === "approved"
+  );
+
   if (isLoading) return <Spninner />;
   return (
     <div>
       <div className="grid md:grid-cols-2 m-10">
         {filteredAprovedClasses?.map((newSingleClass) => (
-          <div key={newSingleClass._id} className="h-3/4 m-7 flex flex-col items-center justify-center">
+          <div
+            key={newSingleClass._id}
+            className="h-3/4 m-7 flex flex-col items-center justify-center"
+          >
             <div
               className={
                 newSingleClass.av_seats > 1
@@ -84,24 +92,40 @@ const Classes = () => {
               }
             >
               <div className="card-body">
-                <span className="font-semibold text-2xl text-zinc-300">Class: </span>
+                <span className="font-semibold text-2xl text-zinc-300">
+                  Class:{" "}
+                </span>
                 <h2 className="card-title">{newSingleClass.c_name}</h2>
-                <span className="font-semibold text-2xl text-zinc-300">Instructor: </span>
+                <span className="font-semibold text-2xl text-zinc-300">
+                  Instructor:{" "}
+                </span>
                 <p>{newSingleClass.name}</p>
-                <span className="font-semibold text-2xl text-zinc-300">Instructor Email: </span>
+                <span className="font-semibold text-2xl text-zinc-300">
+                  Instructor Email:{" "}
+                </span>
                 <p>{newSingleClass.email}</p>
-                <span className="font-semibold text-2xl text-zinc-300">Available Seats: </span>
+                <span className="font-semibold text-2xl text-zinc-300">
+                  Available Seats:{" "}
+                </span>
                 <p>{newSingleClass.av_seats}</p>
-                <span className="font-semibold text-2xl text-zinc-300">Price: </span>
+                <span className="font-semibold text-2xl text-zinc-300">
+                  Price:{" "}
+                </span>
                 <p>{newSingleClass.price}</p>
               </div>
               <figure className="h-full">
-                <img src={newSingleClass.photoURL} alt="instructor" className="h-full w-full object-cover" />
+                <img
+                  src={newSingleClass.photoURL}
+                  alt="instructor"
+                  className="h-full w-full object-cover"
+                />
               </figure>
             </div>
             <button
               className={
-                newSingleClass.av_seats > 1 ? "btn btn-outline btn-accent" : "btn-disabled btn btn-outline btn-accent"
+                newSingleClass.av_seats > 1
+                  ? "btn btn-outline btn-accent"
+                  : "btn-disabled btn btn-outline btn-accent"
               }
               onClick={() => handleTakingClass(newSingleClass)}
             >

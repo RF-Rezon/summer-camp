@@ -4,14 +4,14 @@ import UseAuth from "./useAuth";
 
 
 const useInstructor = () => {
-    const {user, loading} = UseAuth();
+    const {user, loading, webUrl} = UseAuth();
     const token = localStorage.getItem("access-token");
     
     const {data: is_Instructor , isLoading: is_Instructor_Loading} = useQuery({
         queryKey: ['isInstructor', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axios.get(`https://summerproject.vercel.app/users/instructor/${user?.email}`, {
+            const res = await axios.get(`${webUrl}/users/instructor/${user?.email}`, {
                 headers: {
                   Authorization: `Bearer ${token}`,
                 },

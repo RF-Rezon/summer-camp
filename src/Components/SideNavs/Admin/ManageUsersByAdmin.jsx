@@ -2,44 +2,50 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import Spninner from "../../../Utils/Spninner";
-
-const token = localStorage.getItem("access-token");
-
-const fetchedNewAddedClass = async () => {
-  const res = await axios.get("https://summerproject.vercel.app/users",
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  } );
-  return res.data;
-};
+import UseAuth from "../../../Hooks/useAuth";
 
 const ManageUsersByAdmin = () => {
+  const { webUrl } = UseAuth();
+  const token = localStorage.getItem("access-token");
+
+  const fetchedNewAddedClass = async () => {
+    const res = await axios.get(`${webUrl}/users`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  };
 
   const makeAdminHandler = (singleUser) => {
     const userId = singleUser._id;
-    axios.patch(`https://summerproject.vercel.app/newAddedClass/makeadmin/${userId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => {
-      refetch();
-    });
+    axios
+      .patch(`${webUrl}/newAddedClass/makeadmin/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        refetch();
+      });
   };
   const makeInstructorHandler = (singleUser) => {
     const userId = singleUser._id;
-    axios.patch(`https://summerproject.vercel.app/newAddedClass/makeinstructor/${userId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => {
-      refetch();
-    });
+    axios
+      .patch(`${webUrl}/newAddedClass/makeinstructor/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        refetch();
+      });
   };
-  const { data: allRegisteredUsers, isLoading, refetch } = useQuery(["allRegisteredUsers"], fetchedNewAddedClass);
+  const {
+    data: allRegisteredUsers,
+    isLoading,
+    refetch,
+  } = useQuery(["allRegisteredUsers"], fetchedNewAddedClass);
 
   // const funs = async () => {
   //   const generalUsers = await allRegisteredUsers.filter((user) => !user?.role);
@@ -48,7 +54,6 @@ const ManageUsersByAdmin = () => {
 
   // funs().then(res=> {
   // })
-
 
   if (isLoading) return <Spninner />;
   return (

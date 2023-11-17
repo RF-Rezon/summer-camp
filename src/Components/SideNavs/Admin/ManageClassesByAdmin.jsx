@@ -3,24 +3,30 @@ import axios from "axios";
 import React, { useState } from "react";
 import Spninner from "../../../Utils/Spninner";
 import "./popupbtn.css";
-
-const token = localStorage.getItem("access-token");
-
-const fetchedNewAddedClass = async () => {
-  const res = await axios.get("https://summerproject.vercel.app/newAddedClass",
-  {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  return res.data;
-};
+import UseAuth from "../../../Hooks/useAuth";
 
 const ManageClassesByAdmin = () => {
+  
+  const token = localStorage.getItem("access-token");
+  const { webUrl } = UseAuth();
+
+  const fetchedNewAddedClass = async () => {
+    const res = await axios.get(`${webUrl}/newAddedClass`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return res.data;
+  };
+
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [inputValue, setInputValue] = useState("");
 
-  const { data: allClasses, isLoading, refetch } = useQuery(["allClasses"], fetchedNewAddedClass);
+  const {
+    data: allClasses,
+    isLoading,
+    refetch,
+  } = useQuery(["allClasses"], fetchedNewAddedClass);
 
   const [disabledButtons, setDisabledButtons] = useState([]);
 
@@ -28,17 +34,21 @@ const ManageClassesByAdmin = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    axios.patch(`https://summerproject.vercel.app/newAddedClass/feedBack/${selectedItemId}` , {feedBack: inputValue},
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    } ).then((res) => {
-      refetch();
-    });
+    axios
+      .patch(
+        `${webUrl}/newAddedClass/feedBack/${selectedItemId}`,
+        { feedBack: inputValue },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => {
+        refetch();
+      });
     setSelectedItemId(null);
     setInputValue("");
-
   };
 
   const handleButtonClick = (itemId) => {
@@ -51,28 +61,36 @@ const ManageClassesByAdmin = () => {
 
   const approveHandler = (singleClass) => {
     const userId = singleClass._id;
-    axios.patch(`https://summerproject.vercel.app/newAddedClass/approve/${userId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => {
-      refetch();
-      setDisabledButtons((prevDisabledButtons) => [...prevDisabledButtons, userId]);
-    });
+    axios
+      .patch(`${webUrl}/newAddedClass/approve/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        refetch();
+        setDisabledButtons((prevDisabledButtons) => [
+          ...prevDisabledButtons,
+          userId,
+        ]);
+      });
   };
 
   const denyHandler = (singleClass) => {
     const userId = singleClass._id;
-    axios.patch(`https://summerproject.vercel.app/newAddedClass/deny/${userId}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }).then((res) => {
-      refetch();
-      setDisabledButtons((prevDisabledButtons) => [...prevDisabledButtons, userId]);
-    });
+    axios
+      .patch(`${webUrl}/newAddedClass/deny/${userId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        refetch();
+        setDisabledButtons((prevDisabledButtons) => [
+          ...prevDisabledButtons,
+          userId,
+        ]);
+      });
   };
 
   return (
@@ -137,7 +155,12 @@ const ManageClassesByAdmin = () => {
                   >
                     Deny
                   </button>
-                  <button className="btn btn-ghost btn-xs  hover:bg-blue-500 hover:text-black" onClick={() => handleButtonClick(singleClass._id)}>Feed Back</button>
+                  <button
+                    className="btn btn-ghost btn-xs  hover:bg-blue-500 hover:text-black"
+                    onClick={() => handleButtonClick(singleClass._id)}
+                  >
+                    Feed Back
+                  </button>
                 </th>
               </tr>
             ))}
@@ -145,9 +168,21 @@ const ManageClassesByAdmin = () => {
         </table>
         {selectedItemId !== null && (
           <div className="popup">
-            <form onSubmit={handleFormSubmit} className="flex flex-col space-y-6">
-              <textarea value={inputValue} onChange={handleInputChange} placeholder="Enter your text" />
-              <button className="btn btn-ghost btn-xs w-3/5 mx-auto hover:bg-purple-500" type="submit">Submit</button>
+            <form
+              onSubmit={handleFormSubmit}
+              className="flex flex-col space-y-6"
+            >
+              <textarea
+                value={inputValue}
+                onChange={handleInputChange}
+                placeholder="Enter your text"
+              />
+              <button
+                className="btn btn-ghost btn-xs w-3/5 mx-auto hover:bg-purple-500"
+                type="submit"
+              >
+                Submit
+              </button>
             </form>
           </div>
         )}

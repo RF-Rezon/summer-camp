@@ -9,9 +9,11 @@ import UseAuth from "./../../Hooks/useAuth";
 
 const token = localStorage.getItem("access-token");
 
+
 const Login = () => {
+  
   const navigate = useNavigate();
-  const { normalLogin, LoginWithGoogle } = UseAuth();
+  const { normalLogin, LoginWithGoogle, webUrl } = UseAuth();
   const {
     register,
     handleSubmit,
@@ -24,11 +26,7 @@ const Login = () => {
     LoginWithGoogle()
       .then((result) => {
         const loggedUser = result.user;
-        axios.post("https://summerproject.vercel.app/users", { name: loggedUser?.displayName, email: loggedUser?.email }, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        axios.post(`${webUrl}/users`, { name: loggedUser?.displayName, email: loggedUser?.email })
         .then(() => {
           Swal.fire({
             icon: "success",

@@ -9,14 +9,14 @@ const token = localStorage.getItem("access-token");
 
 const Add_A_Class = () => {
 
-    const {user} = UseAuth();
+    const {user, webUrl} = UseAuth();
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     const newObject = {
       ...data ,
       feedBack: ""
     }
-    axios.post("https://summerproject.vercel.app/newAddedClass", newObject,
+    axios.post(`${webUrl}/newAddedClass`, newObject,
     {
       headers: {
         Authorization: `Bearer ${token}`,

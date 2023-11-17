@@ -8,12 +8,12 @@ import MyClassesBanner from "./MyClassesBanner";
 const token = localStorage.getItem("access-token");
 
 const My_Classes = () => {
-  const { user} = UseAuth();
+  const { user, webUrl} = UseAuth();
 
   const { data: addedNewClasses = [], isLoading } = useQuery({
     queryKey: ["for_instructor"],
     queryFn: async () => {
-      const res = await axios.get(`https://summerproject.vercel.app/newAddedClass/${user.email}`,
+      const res = await axios.get(`${webUrl}/newAddedClass/${user.email}`,
       {
         headers: {
           Authorization: `Bearer ${token}`,

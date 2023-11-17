@@ -15,8 +15,11 @@ const auth = getAuth(app);
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
+  let webUrl = import.meta.env.VITE_WEB_URL;
+  console.log(webUrl)
+
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const provider = new GoogleAuthProvider();
 
@@ -62,6 +65,7 @@ const AuthProvider = ({ children }) => {
     loading,
     LoginWithGoogle,
     updateUser,
+    webUrl
   };
 
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;

@@ -7,9 +7,10 @@ import UseAuth from "../../Hooks/useAuth";
 
 const token = localStorage.getItem("access-token");
 const Register = () => {
+  
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState("");
-  const { normalRegister, updateUser } = UseAuth();
+  const { normalRegister, updateUser, webUrl } = UseAuth();
   const {
     register,
     handleSubmit,
@@ -29,7 +30,7 @@ const Register = () => {
           .then(() => {
             axios
               .post(
-                "https://summerproject.vercel.app/users",
+                `${webUrl}/users`,
                 { name: data?.name, email: data?.email },
                 {
                   headers: {

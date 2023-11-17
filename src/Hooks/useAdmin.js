@@ -4,14 +4,14 @@ import UseAuth from "./useAuth";
 
 const useAdmin = () => {
   const token = localStorage.getItem("access-token");
-  const { user, loading } = UseAuth();
+  const { user, loading, webUrl } = UseAuth();
   // const token = localStorage.getItem("access-token");
 
   const { data: is_Admin, isLoading: is_Admin_Loading } = useQuery({
     queryKey: ["isAdmin", user?.email],
     enabled: !loading,
     queryFn: async () => {
-      const res = await axios.get(`https://summerproject.vercel.app/users/admin/${user?.email}`, {
+      const res = await axios.get(`${webUrl}/users/admin/${user?.email}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

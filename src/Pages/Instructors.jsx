@@ -2,17 +2,23 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import Spninner from "../Utils/Spninner";
+import UseAuth from "../Hooks/useAuth";
 const token = localStorage.getItem("access-token");
 
-const fetchedInstructors = async()=> { 
-    const res = await axios.get("https://summerproject.vercel.app/instructors", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-   return res.data;
-}
+
 const Instructors = () => {
+
+  const {  webUrl } = UseAuth();
+
+  const fetchedInstructors = async()=> { 
+      const res = await axios.get(`${webUrl}/instructors`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+     return res.data;
+  }
+
   const {
     data: totalInstructors = [],
     isLoading
