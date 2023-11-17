@@ -24,7 +24,7 @@ const PopularInstructors = () => {
       const popularTeachers =  totalInstructors.slice(0,6)
       return (
         <>
-          <div className="grid md:grid-cols-3 mt-16">
+          <div className="grid md:grid-cols-3 place-items-center">
               {popularTeachers.map((singleInstructor) => (
                 <div key={singleInstructor._id} className="h-3/4 mb-10">
                   <div className="glass w-96">

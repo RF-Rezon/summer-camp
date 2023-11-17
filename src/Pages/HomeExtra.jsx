@@ -4,7 +4,7 @@ import React from "react";
 const HomeExtra = () => {
   return (
     <div>
-      <div className="container px-6 mx-auto">
+      <div className="container mx-auto">
           <section className="mb-32 text-gray-800">
             <div className="mt-16">
               <div className="flex mb-12 md:mb-0">

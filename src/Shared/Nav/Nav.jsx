@@ -34,8 +34,8 @@ const Nav = () => {
   };
   return (
     <div>
-      <header className="bg-zinc-900 border-white border-2 py-16 md:py-10 my-4 md:mb-10">
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+      <header className="bg-zinc-900 border-white py-10 pb-28 border-b-[3px] md:pb-3 md:py-3 border-b-white">
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex md:flex-row flex-col h-16 items-center justify-between gap-4">
             <div className="md:flex md:items-center md:gap-12">
               <Link className="block text-teal-600" to="/">

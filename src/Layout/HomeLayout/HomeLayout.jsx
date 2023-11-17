@@ -6,7 +6,7 @@ import Nav from "../../Shared/Nav/Nav";
 
 const HomeLayout = () => {
   return (
-    <div className="max-w-7xl mx-auto py-3 min-h-screen dark:bg-gradient-to-r from-violet-500 to-fuchsia-500">
+    <div className="max-w-full mx-auto py-3 min-h-screen">
       <Nav />
       <Outlet />
       <Footer />

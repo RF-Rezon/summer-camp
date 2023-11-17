@@ -1,12 +1,10 @@
-
-
-export default {
+module.exports = {
   purge: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
-  darkMode: 'class',
   theme: {
-    extend: {},
-    fontFamily: {
-      body: ['Arial', 'sans-serif'],
+    extend: {
+      colors: {
+        custom: '#14b8a6',
+      },
     },
   },
   variants: {

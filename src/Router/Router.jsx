@@ -38,7 +38,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/instructors",
-        element: <Instructors />,
+        element: <div  className="container mx-auto"><Instructors /></div>,
       },
       {
         path: "/classes",
