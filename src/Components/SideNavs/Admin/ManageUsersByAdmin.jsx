@@ -1,19 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Spninner from "../../../Utils/Spninner";
 import UseAuth from "../../../Hooks/useAuth";
 
 const ManageUsersByAdmin = () => {
-  const { webUrl } = UseAuth();
+  // const [CurrentUserRole, setCurrentUserRole] = useState("");
+  // const [SingleUser, setSingleUser] = useState(null);
+  const { webUrl, user } = UseAuth();
   const token = localStorage.getItem("access-token");
 
   const fetchedNewAddedClass = async () => {
-    const res = await axios.get(`${webUrl}/users`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await axios.get(
+      `${webUrl}/users`
+      // {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // }
+    );
     return res.data;
   };
 
@@ -21,9 +26,7 @@ const ManageUsersByAdmin = () => {
     const userId = singleUser._id;
     axios
       .patch(`${webUrl}/newAddedClass/makeadmin/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        "Content-Type": "application/json",
       })
       .then((res) => {
         refetch();
@@ -33,9 +36,7 @@ const ManageUsersByAdmin = () => {
     const userId = singleUser._id;
     axios
       .patch(`${webUrl}/newAddedClass/makeinstructor/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        "Content-Type": "application/json",
       })
       .then((res) => {
         refetch();
@@ -46,6 +47,25 @@ const ManageUsersByAdmin = () => {
     isLoading,
     refetch,
   } = useQuery(["allRegisteredUsers"], fetchedNewAddedClass);
+
+  // useEffect(() => {
+  //   allRegisteredUsers.map((single) => setSingleUser(single));
+
+  //   if (SingleUser?.email == user?.email) {
+  //     axios
+  //       .get(`${webUrl}/users/${user?.email}`)
+  //       .then((response) => {
+  //         setCurrentUserRole(response?.data);
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching user role:", error);
+  //       });
+  //   } else {
+  //     return;
+  //   }
+  // }, [allRegisteredUsers, user, webUrl]);
+
+  // console.log(CurrentUserRole);
 
   // const funs = async () => {
   //   const generalUsers = await allRegisteredUsers.filter((user) => !user?.role);

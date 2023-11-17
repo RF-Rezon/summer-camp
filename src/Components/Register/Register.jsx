@@ -5,9 +5,8 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../../Hooks/useAuth";
 
-const token = localStorage.getItem("access-token");
+// const token = localStorage.getItem("access-token");
 const Register = () => {
-  
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState("");
   const { normalRegister, updateUser, webUrl } = UseAuth();
@@ -25,7 +24,7 @@ const Register = () => {
     }
     normalRegister(data?.email, data?.password)
       .then((userCredential) => {
-        const user = userCredential.user;
+        const user = userCredential?.user;
         updateUser(data?.name, data?.photoURL)
           .then(() => {
             axios
@@ -33,9 +32,7 @@ const Register = () => {
                 `${webUrl}/users`,
                 { name: data?.name, email: data?.email },
                 {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                  },
+                  "Content-Type": "application/json",
                 }
               )
               .then((data) => {
@@ -70,10 +67,15 @@ const Register = () => {
       <section className="relative flex flex-wrap lg:h-screen lg:items-center">
         <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-lg text-center">
-            <h1 className="text-2xl font-bold text-white sm:text-3xl">REGISTER</h1>
+            <h1 className="text-2xl font-bold text-white sm:text-3xl">
+              REGISTER
+            </h1>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="mx-auto mb-0 mt-8 max-w-md space-y-4"
+          >
             <div>
               <label className="sr-only">Name</label>
 
@@ -85,7 +87,11 @@ const Register = () => {
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="enter your name"
                 />
-                {errors?.name && <span className="text-red-500 font-light">Name is required.</span>}
+                {errors?.name && (
+                  <span className="text-red-500 font-light">
+                    Name is required.
+                  </span>
+                )}
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg
@@ -118,7 +124,11 @@ const Register = () => {
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter email"
                 />
-                {errors?.email && <span className="text-red-500 font-light">Email field is required</span>}
+                {errors?.email && (
+                  <span className="text-red-500 font-light">
+                    Email field is required
+                  </span>
+                )}
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg
@@ -146,7 +156,9 @@ const Register = () => {
 
               <div className="relative">
                 <input
-                  {...register("password", { pattern: /^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.{6,})/ })}
+                  {...register("password", {
+                    pattern: /^(?=.*[A-Z])(?=.*[@#$%^&+=])(?=.{6,})/,
+                  })}
                   type="password"
                   required
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
@@ -154,8 +166,8 @@ const Register = () => {
                 />
                 {errors?.password && (
                   <span className="text-red-500 font-light">
-                    The password should not less than 6 characters. Use at least one capital letter and special
-                    character.
+                    The password should not less than 6 characters. Use at least
+                    one capital letter and special character.
                   </span>
                 )}
 
@@ -197,7 +209,9 @@ const Register = () => {
                   placeholder="Type password again"
                 />
                 {errors?.confirm_password && (
-                  <span className="text-red-500 font-light">Confirm Password field is required</span>
+                  <span className="text-red-500 font-light">
+                    Confirm Password field is required
+                  </span>
                 )}
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg
@@ -236,7 +250,11 @@ const Register = () => {
                   className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                   placeholder="Enter photo url"
                 />
-                {errors?.photoURL && <span className="text-red-500 font-light">This field is required too</span>}
+                {errors?.photoURL && (
+                  <span className="text-red-500 font-light">
+                    This field is required too
+                  </span>
+                )}
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                   <svg
@@ -272,7 +290,11 @@ const Register = () => {
               />
             </div>
           </form>
-          {errorMsg && <p className="text-red-500 font-semibold text-center text-base my-7">{errorMsg}</p>}
+          {errorMsg && (
+            <p className="text-red-500 font-semibold text-center text-base my-7">
+              {errorMsg}
+            </p>
+          )}
         </div>
 
         <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">

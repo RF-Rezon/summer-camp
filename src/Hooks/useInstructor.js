@@ -11,11 +11,13 @@ const useInstructor = () => {
         queryKey: ['isInstructor', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await axios.get(`${webUrl}/users/instructor/${user?.email}`, {
-                headers: {
-                  Authorization: `Bearer ${token}`,
-                },
-              });
+            const res = await axios.get(`${webUrl}/users/instructor/${user?.email}`, 
+            // {
+            //     headers: {
+            //       Authorization: `Bearer ${token}`,
+            //     },
+            //   }
+              );
             return res.data.instructor;
         }
     })

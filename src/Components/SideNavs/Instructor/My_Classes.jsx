@@ -14,11 +14,12 @@ const My_Classes = () => {
     queryKey: ["for_instructor"],
     queryFn: async () => {
       const res = await axios.get(`${webUrl}/newAddedClass/${user.email}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      // {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // }
+      );
       return res.data;
     },
   });

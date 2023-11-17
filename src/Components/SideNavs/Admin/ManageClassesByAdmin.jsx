@@ -6,16 +6,18 @@ import "./popupbtn.css";
 import UseAuth from "../../../Hooks/useAuth";
 
 const ManageClassesByAdmin = () => {
-  
   const token = localStorage.getItem("access-token");
   const { webUrl } = UseAuth();
 
   const fetchedNewAddedClass = async () => {
-    const res = await axios.get(`${webUrl}/newAddedClass`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const res = await axios.get(
+      `${webUrl}/newAddedClass`
+      // {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // }
+    );
     return res.data;
   };
 
@@ -39,9 +41,7 @@ const ManageClassesByAdmin = () => {
         `${webUrl}/newAddedClass/feedBack/${selectedItemId}`,
         { feedBack: inputValue },
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          "Content-Type": "application/json",
         }
       )
       .then((res) => {
@@ -62,11 +62,12 @@ const ManageClassesByAdmin = () => {
   const approveHandler = (singleClass) => {
     const userId = singleClass._id;
     axios
-      .patch(`${webUrl}/newAddedClass/approve/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .patch(
+        `${webUrl}/newAddedClass/approve/${userId}`,
+        {
+          "Content-Type": "application/json",
+        }
+      )
       .then((res) => {
         refetch();
         setDisabledButtons((prevDisabledButtons) => [
@@ -79,11 +80,12 @@ const ManageClassesByAdmin = () => {
   const denyHandler = (singleClass) => {
     const userId = singleClass._id;
     axios
-      .patch(`${webUrl}/newAddedClass/deny/${userId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      .patch(
+        `${webUrl}/newAddedClass/deny/${userId}`,
+        {
+          "Content-Type": "application/json",
+        }
+      )
       .then((res) => {
         refetch();
         setDisabledButtons((prevDisabledButtons) => [

@@ -16,7 +16,6 @@ export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
   let webUrl = import.meta.env.VITE_WEB_URL;
-  console.log(webUrl)
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);

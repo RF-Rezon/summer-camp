@@ -11,11 +11,13 @@ const Instructors = () => {
   const {  webUrl } = UseAuth();
 
   const fetchedInstructors = async()=> { 
-      const res = await axios.get(`${webUrl}/instructors`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.get(`${webUrl}/instructors`, 
+      // {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // }
+      );
      return res.data;
   }
 

@@ -14,11 +14,12 @@ const User_Selected_Class = () => {
     queryKey: ["takenSingleCourse"],
     queryFn: async () => {
       const res = await axios.get(`${webUrl}/classTakenStudents/${user.email}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      // {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //   },
+      // }
+      );
       return res.data;
     }
   });
@@ -26,11 +27,12 @@ const User_Selected_Class = () => {
   const deleteHandler = (singleCourse) => {
     const id = singleCourse._id;
     axios.delete(`${webUrl}/classTakenStudents/delete/${id}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    // {
+    //   headers: {
+    //     Authorization: `Bearer ${token}`,
+    //   },
+    // }
+    )
     .then(res=>{
         Swal.fire({
             icon: "success",

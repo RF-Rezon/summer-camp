@@ -18,10 +18,9 @@ const Add_A_Class = () => {
     }
     axios.post(`${webUrl}/newAddedClass`, newObject,
     {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+      "Content-Type": "application/json",
+    }
+    )
     .then(res=> {
         Swal.fire({
             icon: "success",
