@@ -28,8 +28,8 @@ const PopularInstructors = () => {
           <div className="flex flex-wrap flex-col md:flex-row gap-32 items-center justify-between py-16">
               {popularTeachers.map((singleInstructor) => (
                 <div key={singleInstructor._id} className="bg-custom bg-opacity-90">
-                  <div className="w-96 border-[3px] shadow-lg">
-                    <div className="card-body">
+                  <div className="w-96  shadow-lg p-5 m-2">
+                    <div className="pb-10">
                       <h2 className="card-title text-2xl font-bold">{singleInstructor.name}</h2>
                       <p className="text-sm font-medium">{singleInstructor.email}</p>
                     </div>

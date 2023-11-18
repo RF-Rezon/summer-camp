@@ -2,8 +2,22 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../../Hooks/useAuth";
+import { LuMusic } from "react-icons/lu";
+import useSound from "use-sound";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Nav = () => {
+  const soundUrl = "/public/music.mp3";
+  const [isClicked, setIsClicked] = useState(false);
+
+  const [play, { stop }] = useSound(soundUrl, { volume: 0.1 });
+
+  useEffect(() => {
+    isClicked ? play() : stop();
+  }, [isClicked]);
+
+
   const { user, LogOut } = UseAuth();
   const navigate = useNavigate();
 
@@ -27,8 +41,7 @@ const Nav = () => {
             }),
               navigate("/");
           })
-          .catch((error) => {
-          });
+          .catch((error) => {});
       }
     });
   };
@@ -49,19 +62,28 @@ const Nav = () => {
               <nav aria-label="Global">
                 <ul className="flex items-center gap-8 text-sm">
                   <li>
-                    <Link className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out" to="/">
+                    <Link
+                      className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
+                      to="/"
+                    >
                       Home
                     </Link>
                   </li>
 
                   <li>
-                    <Link className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out" to="/instructors">
+                    <Link
+                      className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
+                      to="/instructors"
+                    >
                       Instructors
                     </Link>
                   </li>
 
                   <li>
-                    <Link className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out" to="/classes">
+                    <Link
+                      className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
+                      to="/classes"
+                    >
                       Classes
                     </Link>
                   </li>
@@ -69,7 +91,10 @@ const Nav = () => {
                   {user && (
                     <>
                       <li>
-                        <Link className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out text-red" to="/dashboard">
+                        <Link
+                          className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out text-red"
+                          to="/dashboard"
+                        >
                           Dashboard
                         </Link>
                       </li>
@@ -108,6 +133,14 @@ const Nav = () => {
                   </Link>
                 </div>
               )}
+
+              <div className="ml-5">
+                <div className="h-10 w-10 bg-gray-950 cursor-pointer bg-transparent flex items-center justify-center rounded-full">
+                  <div onClick={() => setIsClicked(!isClicked)}>
+                    <LuMusic />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

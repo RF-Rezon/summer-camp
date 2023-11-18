@@ -2,16 +2,16 @@ import React from "react";
 import HomeExtra from "./HomeExtra";
 import PopularInstructors from "./PopularInstructors";
 import Courses from "../Components/Courses/Courses";
+import AnimatedArrow from "../Utils/AnimatedArrow";
 
 
 const Home = () => {
   return (
-    <div className="">
-      <div className="mx-auto max-h-full border-b-custom z-50">
-        <div className="w-full">
-          <div id="slide1" className="relative w-full h-1/3">
+    <div>
+      <div className="mx-auto border-b-custom z-50 min-h-screen space-y-88">
+          <div className="relative">
             <img src="/1.png" className="w-full min-h-screen object-cover" />
-            <div className="absolute top-1/3 left-1/4 ">
+            <div className="absolute top-1/3 left-1/4">
               <div className="bg-custom pb-2 pl-4">
                 <p className="text-7xl font-semibold py-5 uppercase">Soundscape</p>
                 <p className="text-lg font-normal pb-2">
@@ -21,8 +21,10 @@ const Home = () => {
                 </p>
               </div>
             </div>
+            <div className="absolute left-4 bottom-[24px]">
+            <AnimatedArrow className='h-3 w-3'/>
+            </div>
           </div>
-        </div>
       </div>
       {/* ........................................................................................... */}
         <Courses />
