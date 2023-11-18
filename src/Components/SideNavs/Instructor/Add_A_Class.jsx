@@ -3,9 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import UseAuth from "../../../Hooks/useAuth";
-import Title from "../../../Utils/Title";
 
-const token = localStorage.getItem("access-token");
 
 const Add_A_Class = () => {
 
@@ -31,20 +29,27 @@ const Add_A_Class = () => {
 };
 
   return (
-    <div className="w-2/5 h-screen">
-      <Title heading="Add Class" sHeading="You can add classes here" />
+    <div className="w-2/5 min-h-screen">
+      <div className="bg-custom bg-opacity-40 py-24 flex items-center justify-center my-10">
+          <div className="text-4xl font-semibold">
+            <p>
+              You can <span className="bg-custom p-2 ml-2">Add</span> classes here
+            </p>
+          </div>
+        </div>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <p className="py-5 font-medium">
+        <p className="py-5 font-semibold text-gray-800 text-base">
           Class Name
         </p>
         <div className="relative z-0 w-full mb-6 group">
-          <select {...register("c_name")} className="select select-info w-full max-w-xs">
-            <option value="piano">Piano</option>
-            <option value="guiter">Guitar</option>
-            <option value="violin">Violin</option>
-            <option value="drums">Drums</option>
-            <option value="trombone">Trombone</option>
+          <select {...register("c_name")} className="select select-info w-full max-w-xs text-gray-800">
+            <option className="text-gray-800" value="Piano Prowess: Keys to Excellence">Piano</option>
+            <option className="text-gray-800" value="Guitar Mastery: Fretboard Fundamentals ">Guiter</option>
+            <option className="text-gray-800" value="Violin Virtuosity: Bow to Strings">Violin</option>
+            <option className="text-gray-800" value="Drum Dynamics: Rhythm Revolution">Drums</option>
+            <option className="text-gray-800" value="Bass Groove: Low-End Explorations">Bass</option>
+            <option className="text-gray-800" value="Saxophone Serenade: Wind Harmony">Saxophone</option>
           </select>
         </div>
         <div className="relative z-0 w-full mb-6 group">
@@ -52,7 +57,7 @@ const Add_A_Class = () => {
             {...register("photoURL")}
             type="url"
             id="floating_repeat_password"
-            className="block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=""
             required
           />
@@ -68,9 +73,8 @@ const Add_A_Class = () => {
             {...register("name")}
             type="text"
             id="floating_repeat_password"
-            className="block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
-       
             readOnly 
             value={user?.displayName || ""}
             // TODO: username sometimes dont rander
@@ -87,7 +91,7 @@ const Add_A_Class = () => {
             {...register("email")}
             type="email"
             id="floating_repeat_password"
-            className="block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
             placeholder=" "
             readOnly 
             value={user?.email || ""}
@@ -105,7 +109,7 @@ const Add_A_Class = () => {
               {...register("av_seats")}
               type="number"
               id="floating_first_name"
-              className="block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
@@ -121,7 +125,7 @@ const Add_A_Class = () => {
               {...register("price")}
               type="number"
               id="floating_last_name"
-              className="block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block py-2.5 px-0 w-full text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder=" "
               required
             />
@@ -132,14 +136,30 @@ const Add_A_Class = () => {
               Price
             </label>
           </div>
+          <div className="relative z-0 w-full group mb-6">
+            <input
+              {...register("description")}
+              type="text"
+              id="floating_first_name"
+              className="block py-2.5 px-0 w-full text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              required
+              placeholder=" "
+            />
+            <label
+              htmlFor="floating_first_name"
+              className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >
+              Description
+            </label>
+          </div>
           <div className="hidden"><input type="number" {...register("enrolled")} defaultValue="0" /></div>
           <div className="relative z-0 w-full mb-6 group">
             <p className="font-medium">Status: </p>
             <input
               {...register("status")}
               type="text"
-              className="block py-2.5 px-0 w-full text-sm text-gray-200 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
+              className="block py-2.5 px-0 w-full text-sm text-gray-800 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              placeholder=""
               required
               value="pending"
               readOnly
@@ -148,7 +168,7 @@ const Add_A_Class = () => {
         </div>
         <input
           type="submit"
-          className="text-black bg-teal-700 hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-teal-600 dark:hover:bg-teal-700 dark:focus:ring-blue-800 my-6"
+          className="bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer"
           value="Add Class"
         />
       </form>

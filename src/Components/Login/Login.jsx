@@ -7,8 +7,6 @@ import Swal from "sweetalert2";
 import UseAuth from "./../../Hooks/useAuth";
 
 
-const token = localStorage.getItem("access-token");
-
 
 const Login = () => {
   
@@ -71,8 +69,8 @@ const Login = () => {
     <div className="my-16">
       <section className="relative flex flex-wrap lg:h-screen lg:items-center">
         <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
-          <div className="mx-auto max-w-lg text-center">
-            <h1 className="text-2xl font-bold text-white sm:text-3xl">LOGIN</h1>
+          <div className="mx-auto max-w-lg text-center pb-6">
+            <h1 className="text-2xl font-bold text-gray-900 sm:text-3xl">LOGIN</h1>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mb-0 mt-8 max-w-md space-y-4">
@@ -82,7 +80,7 @@ const Login = () => {
               <div className="relative">
                 <input
                   {...register("email")}
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-base font-medium shadow-sm text-gray-900 "
                   placeholder="Enter email"
                   type="email"
                 />
@@ -113,7 +111,7 @@ const Login = () => {
                 <input
                   type="password"
                   {...register("password")}
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-base font-medium shadow-sm text-gray-900"
                   placeholder="Enter password"
                 />
 
@@ -144,26 +142,26 @@ const Login = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-500">
+              <p className="text-base font-medium text-gray-500">
                 No account?
-                <a className="underline" href="/register">
+                <a className="underline ml-3" href="/register">
                   Sign up
                 </a>
               </p>
 
               <input
                 type="submit"
-                className="inline-block rounded-lg bg-teal-600 px-5 py-3 text-sm font-medium text-white cursor-pointer"
+                className="bg-custom px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold"
                 value="Sign In"
               />
             </div>
           </form>
           <div
             onClick={handleGoogleLogin}
-            className="cursor-pointer bg-white w-3/5 p-5 flex items-center justify-center my-7 mx-auto rounded-lg"
+            className="cursor-pointer bg-black w-3/5 p-5 flex items-center justify-center my-7 mx-auto mt-20"
           >
             <div className="mx-auto">
-              <FaGoogle fill="black" />
+              <FaGoogle fill="white" />
             </div>
           </div>
         </div>

@@ -23,8 +23,7 @@ const Register = () => {
       return;
     }
     normalRegister(data?.email, data?.password)
-      .then((userCredential) => {
-        const user = userCredential?.user;
+      .then(() => {
         updateUser(data?.name, data?.photoURL)
           .then(() => {
             axios
@@ -66,8 +65,8 @@ const Register = () => {
     <div className="my-16">
       <section className="relative flex flex-wrap lg:h-screen lg:items-center">
         <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
-          <div className="mx-auto max-w-lg text-center">
-            <h1 className="text-2xl font-bold text-white sm:text-3xl">
+          <div className="mx-auto max-w-lg text-center pb-6">
+            <h1 className="text-2xl font-bold sm:text-3xl text-gray-900">
               REGISTER
             </h1>
           </div>
@@ -84,7 +83,7 @@ const Register = () => {
                   {...register("name")}
                   type="text"
                   required
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  className="w-full rounded-lg border-gray-200 text-gray-900 p-4 pe-12 text-base font-medium shadow-sm"
                   placeholder="enter your name"
                 />
                 {errors?.name && (
@@ -121,7 +120,7 @@ const Register = () => {
                   {...register("email")}
                   type="email"
                   required
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  className="w-full rounded-lg border-gray-200 text-gray-900 p-4 pe-12 text-base font-medium shadow-sm"
                   placeholder="Enter email"
                 />
                 {errors?.email && (
@@ -161,7 +160,7 @@ const Register = () => {
                   })}
                   type="password"
                   required
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  className="w-full rounded-lg border-gray-200 text-gray-900 p-4 pe-12 text-base font-medium shadow-sm"
                   placeholder="Enter password"
                 />
                 {errors?.password && (
@@ -205,7 +204,7 @@ const Register = () => {
                   type="password"
                   required
                   {...register("confirm_password")}
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  className="w-full rounded-lg border-gray-200 text-gray-900 p-4 pe-12 text-base font-medium shadow-sm"
                   placeholder="Type password again"
                 />
                 {errors?.confirm_password && (
@@ -247,7 +246,7 @@ const Register = () => {
                   {...register("photoURL")}
                   type="url"
                   required
-                  className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  className="w-full rounded-lg border-gray-200 text-gray-900 p-4 pe-12 text-base font-medium shadow-sm"
                   placeholder="Enter photo url"
                 />
                 {errors?.photoURL && (
@@ -276,16 +275,16 @@ const Register = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <p className="text-sm text-gray-500">
+              <p className="text-base font-medium text-gray-500">
                 Have Account?
-                <a className="underline" href="/login">
+                <a className="underline ml-3" href="/login">
                   Sign In
                 </a>
               </p>
 
               <input
                 type="submit"
-                className="inline-block rounded-lg bg-teal-600 px-5 py-3 text-sm font-medium text-white cursor-pointer"
+                className="bg-custom px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold"
                 value="Sign Up"
               />
             </div>

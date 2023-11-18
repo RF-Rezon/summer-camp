@@ -3,11 +3,12 @@ import axios from 'axios';
 import React from 'react';
 import Spninner from '../Utils/Spninner';
 import UseAuth from '../Hooks/useAuth';
-
-
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const PopularInstructors = () => {
+
+  const router = useNavigate();
   
   const {  webUrl } = UseAuth();
 
@@ -24,13 +25,13 @@ const PopularInstructors = () => {
       const popularTeachers =  totalInstructors.slice(0,6)
       return (
         <>
-          <div className="grid md:grid-cols-3 place-items-center">
+          <div className="flex flex-wrap flex-col md:flex-row gap-32 items-center justify-between py-16">
               {popularTeachers.map((singleInstructor) => (
-                <div key={singleInstructor._id} className="h-3/4 mb-10">
-                  <div className="glass w-96">
+                <div key={singleInstructor._id} className="bg-custom bg-opacity-90">
+                  <div className="w-96 border-[3px] shadow-lg">
                     <div className="card-body">
-                      <h2 className="card-title text-gray-400">{singleInstructor.name}</h2>
-                      <p>{singleInstructor.email}</p>
+                      <h2 className="card-title text-2xl font-bold">{singleInstructor.name}</h2>
+                      <p className="text-sm font-medium">{singleInstructor.email}</p>
                     </div>
                     <figure className="h-72">
                       <img src={singleInstructor.image} alt="instructor" className="h-full w-full  object-cover" />
@@ -38,6 +39,14 @@ const PopularInstructors = () => {
                   </div>
                 </div>
               ))}
+              <div>
+              <div
+                    className="bg-custom px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold"
+                    onClick={()=> router("/instructors")}
+                  >
+                    See all instructors
+                  </div>
+              </div>
           </div>
         </>
       );

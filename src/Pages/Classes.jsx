@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../Hooks/useAuth";
 import Spninner from "../Utils/Spninner";
-const token = localStorage.getItem("access-token");
 
 const Classes = () => {
-  const { user, webUrl } = UseAuth();
+  const { user, webUrl} = UseAuth();
   const navigate = useNavigate();
+
 
   const fetchedNewAddedClass = async () => {
     const res = await axios.get(`${webUrl}/newAddedClass`);
@@ -71,6 +71,8 @@ const Classes = () => {
     refetch,
   } = useQuery(["added_new_class"], fetchedNewAddedClass);
 
+  // setAllClasses(addedNewClasses)
+
   const filteredAprovedClasses = addedNewClasses.filter(
     (singleCard) => singleCard.status === "approved"
   );
@@ -78,7 +80,7 @@ const Classes = () => {
   if (isLoading) return <Spninner />;
   return (
     <div>
-      <div className="grid md:grid-cols-2 m-10">
+      {/* <div className="grid md:grid-cols-2 m-10">
         {filteredAprovedClasses?.map((newSingleClass) => (
           <div
             key={newSingleClass._id}
@@ -131,6 +133,68 @@ const Classes = () => {
             >
               Select
             </button>
+          </div>
+        ))}
+      </div> */}
+
+      <div className="w-full flex flex-col items-center space-y-10 min-h-screen">
+        {filteredAprovedClasses?.map((newSingleClass) => (
+          <div key={newSingleClass._id} className="w-5/6 my-10 mb-14">
+            <div className="flex items-center justify-between w-full p-0.5 shadow-xl transition [animation-duration:_6s] hover:shadow-sm border-custom border-2  mb-5">
+              <div className="bg-white p-10 basis-3/4">
+                <h3 className="mt-0.5 text-lg font-semibold text-gray-900">
+                  Class Name:
+                  <span className="ml-1 font-medium text-gray-900 pl-2">
+                    {newSingleClass.c_name}
+                  </span>
+                </h3>
+                <p className="text-lg font-medium text-gray-900 py-3 pt-5">
+                  {newSingleClass.description}
+                </p>
+                <h3 className="mt-0.5 text-lg font-semibold text-gray-900">
+                  Instructor:
+                  <span className="ml-1 font-medium text-gray-900 pl-2">
+                    {newSingleClass.name}
+                  </span>
+                </h3>
+                <h3 className="mt-0.5 text-lg font-semibold text-gray-900">
+                  Instructor Email:
+                  <span className="ml-1 font-medium text-gray-900 pl-2">
+                    {newSingleClass.email}
+                  </span>
+                </h3>
+                <h3 className="mt-0.5 text-lg font-semibold text-gray-900">
+                  Available seats:
+                  <span className="ml-1 font-medium text-gray-900 pl-2">
+                    {500 - newSingleClass.av_seats}
+                  </span>
+                </h3>
+
+                <h3 className="mt-0.5 text-lg font-semibold text-gray-900">
+                  Price:
+                  <span className="ml-1 font-medium text-gray-900 pl-2">
+                    {newSingleClass.price}
+                  </span>
+                </h3>
+
+                <button
+                  className={
+                    newSingleClass.av_seats > 1
+                      ? "bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer mt-10"
+                      : "btn-disabled bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer mt-10"
+                  }
+                  onClick={() => handleTakingClass(newSingleClass)}
+                >
+                  Select
+                </button>
+              </div>
+              <div className="flex-1">
+                <img
+                  src={newSingleClass.photoURL}
+                  className="object-cover h-full w-full"
+                />
+              </div>
+            </div>
           </div>
         ))}
       </div>

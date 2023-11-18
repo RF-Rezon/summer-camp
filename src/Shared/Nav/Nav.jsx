@@ -34,14 +34,14 @@ const Nav = () => {
   };
   return (
     <div>
-      <header className="bg-zinc-900 border-white py-10 pb-28 border-b-[3px] md:pb-3 md:py-3 border-b-white">
+      <header className="bg-custom bg-opacity-90 border-white py-10 pb-28 border-b-[3px] md:pb-3 md:py-3 border-b-white">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex md:flex-row flex-col h-16 items-center justify-between gap-4">
             <div className="md:flex md:items-center md:gap-12">
               <Link className="block text-teal-600" to="/">
                 <span className="sr-only">Home</span>
-                <p className="text-2xl font-semibold text-teal-600">SOUNDSCAPE</p>
-                <span className="hidden h-1 w-10 rounded bg-teal-500 lg:block"></span>
+                <p className="text-2xl font-semibold">SOUNDSCAPE</p>
+                <span className="hidden h-1 w-10 rounded bg-black lg:block"></span>
               </Link>
             </div>
 
@@ -49,19 +49,19 @@ const Nav = () => {
               <nav aria-label="Global">
                 <ul className="flex items-center gap-8 text-sm">
                   <li>
-                    <Link className="text-gray-500 transition hover:text-gray-300" to="/">
+                    <Link className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out" to="/">
                       Home
                     </Link>
                   </li>
 
                   <li>
-                    <Link className="text-gray-500 transition hover:text-gray-300" to="/instructors">
+                    <Link className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out" to="/instructors">
                       Instructors
                     </Link>
                   </li>
 
                   <li>
-                    <Link className="text-gray-500 transition hover:text-gray-300" to="/classes">
+                    <Link className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out" to="/classes">
                       Classes
                     </Link>
                   </li>
@@ -69,7 +69,7 @@ const Nav = () => {
                   {user && (
                     <>
                       <li>
-                        <Link className="text-gray-500 transition hover:text-gray-300 text-red" to="/dashboard">
+                        <Link className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out text-red" to="/dashboard">
                           Dashboard
                         </Link>
                       </li>
@@ -92,7 +92,7 @@ const Nav = () => {
               {!user ? (
                 <div>
                   <Link
-                    className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow cursor-pointer"
+                    className=" bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer"
                     to="/login"
                   >
                     Login
@@ -101,7 +101,7 @@ const Nav = () => {
               ) : (
                 <div>
                   <Link
-                    className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow cursor-pointer"
+                    className=" bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer"
                     onClick={handleLogOut}
                   >
                     Log Out

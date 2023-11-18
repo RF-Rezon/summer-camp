@@ -17,6 +17,8 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   let webUrl = import.meta.env.VITE_WEB_URL;
 
+  let [allClasses, setAllClasses] = useState([])
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -64,7 +66,9 @@ const AuthProvider = ({ children }) => {
     loading,
     LoginWithGoogle,
     updateUser,
-    webUrl
+    webUrl,
+    allClasses, 
+    setAllClasses
   };
 
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;

@@ -1,52 +1,52 @@
 import React from "react";
-import Title from "../Utils/Title";
 import HomeExtra from "./HomeExtra";
 import PopularInstructors from "./PopularInstructors";
+import Courses from "../Components/Courses/Courses";
+
 
 const Home = () => {
   return (
     <div className="">
       <div className="mx-auto max-h-full border-b-custom z-50">
-        <div className="carousel w-full">
-          <div id="slide1" className="carousel-item relative w-full h-1/3">
-            <img
-              src="/1.png"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide4" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide2" className="btn btn-circle">
-                ❯
-              </a>
-            </div>
-          </div>
-          <div id="slide2" className="carousel-item relative w-full h-1/3">
-            <img
-              src="/2.png"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-              <a href="#slide1" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide1" className="btn btn-circle">
-                ❯
-              </a>
+        <div className="w-full">
+          <div id="slide1" className="relative w-full h-1/3">
+            <img src="/1.png" className="w-full min-h-screen object-cover" />
+            <div className="absolute top-1/3 left-1/4 ">
+              <div className="bg-custom pb-2 pl-4">
+                <p className="text-7xl font-semibold py-5 uppercase">Soundscape</p>
+                <p className="text-lg font-normal pb-2">
+                  provides lessons, exercises, and interactive tools that help
+                  you learn music. Learn the skills essential for understanding
+                  music, reading music, and playing an instrument.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="container mx-auto bg-pink-300">
-        <div className="bg-green-300 py-16">
-          <Title heading="Our" sHeading="Popular Instructors" />
+      {/* ........................................................................................... */}
+        <Courses />
+      {/* ..................................................................................... */}
+      <div className="container mx-auto py-6 pt-10 mt-20">
+      <div className="pb-10">
+          <div className="py-8 flex items-center justify-start my-10 bg-custom bg-opacity-40 w-1/2 ml-auto">
+          <div className="text-4xl font-semibold space-y-5 text-start pl-5">
+              <p className="text-gray-800 text-[50px] font-semibold">TOP</p>
+              <p className="text-gray-800"><span className="bg-custom p-2 ml-1">INSTRUCTORS</span></p>
+            </div>
+          </div>
         </div>
         <PopularInstructors />
       </div>
-      <div className="bg-slate-800 container mx-auto">
-        <div className="bg-orange-300 py-16">
-          <Title heading="Some" sHeading="Students Reviews" />
+      {/* ............................................................................................... */}
+      <div className="container mx-auto pb-10">
+        <div className="pb-10">
+          <div className="py-8 flex items-center justify-end my-10 bg-custom bg-opacity-40 w-1/2">
+          <div className="text-4xl font-semibold space-y-5 text-end pr-5">
+              <p className="text-gray-800 text-[50px] font-semibold uppercase">Some</p>
+              <p className="text-gray-800 uppercase">Student <span className="bg-custom p-2 ml-1 uppercase">Reviews</span></p>
+            </div>
+          </div>
         </div>
         <HomeExtra />
       </div>

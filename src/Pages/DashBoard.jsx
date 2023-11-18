@@ -23,28 +23,28 @@ const DashBoard = () => {
             {is_Admin ? (
               <div>
                 <li>
-                  <Link to="manageClassesByAdmin">Manage Classes</Link>
+                  <Link className="text-gray-800 font-medium bg-teal-400 hover:bg-teal-600 hover:text-teal-100 my-3" to="manageClassesByAdmin">Manage Classes</Link>
                 </li>
                 <li>
-                  <Link to="manageUsersByAdmin">Manage Users</Link>
+                  <Link className="text-gray-800 font-medium bg-teal-400 hover:bg-teal-600 hover:text-teal-100 my-3" to="manageUsersByAdmin">Manage Users</Link>
                 </li>
               </div>
             ) : is_Instructor ? (
               <div>
                 <li>
-                  <Link to="add_a_class">Add A Class</Link>
+                  <Link className="text-gray-800 font-medium bg-teal-400 hover:bg-teal-600 hover:text-teal-100 my-3" to="add_a_class">Add A Class</Link>
                 </li>
                 <li>
-                  <Link to="my_classes">My Classes</Link>
+                  <Link className="text-gray-800 font-medium bg-teal-400 hover:bg-teal-600 hover:text-teal-100 my-3" to="my_classes">My Classes</Link>
                 </li>
               </div>
             ) : (
               <div>
                 <li>
-                  <Link to="userSelecetedClass">My selected Classes</Link>
+                  <Link className="text-gray-800 font-medium bg-teal-400 hover:bg-teal-600 hover:text-teal-100 my-3" to="userSelecetedClass">My selected Classes</Link>
                 </li>
                 <li>
-                  <Link to="enrolledClasses">My Enrolled Classes</Link>
+                  <Link className="text-gray-800 font-medium bg-teal-400 hover:bg-teal-600 hover:text-teal-100 my-3" to="enrolledClasses">My Enrolled Classes</Link>
                 </li>
               </div>
             )}

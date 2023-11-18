@@ -27,7 +27,7 @@ const My_Classes = () => {
   if (isLoading) return <Spninner />;
 
   return (
-    <div className="w-5/6 flex flex-col items-center h-screen">
+    <div className="w-5/6 flex flex-col items-center h-screen space-y-10 min-h-screen">
       {addedNewClasses.map((singleClass) => (
         <MyClassesBanner singleClass={singleClass} key={singleClass._id} />
       ))}

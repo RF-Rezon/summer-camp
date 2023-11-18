@@ -96,8 +96,8 @@ const ManageClassesByAdmin = () => {
   };
 
   return (
-    <div>
-      <div className="overflow-x-auto h-screen">
+    <div className="dash_classes">
+      <div className="overflow-x-auto min-h-screen">
         <table className="table">
           {/* head */}
           <thead>

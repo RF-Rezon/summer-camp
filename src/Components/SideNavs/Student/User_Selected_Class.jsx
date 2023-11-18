@@ -41,13 +41,17 @@ const User_Selected_Class = () => {
           refetch();
     })
   };
-  const payHandler = (singleCourse) => {
-    navigate("/dashboard/paymentPage")
+  const payHandler = () => {
+    Swal.fire({
+      title: "You want pay!",
+      text: `Thanks for that! No money. I will teach you for free. Take love😊💖`,
+      icon: "success"
+    })
   };
 
   return (
-    <div>
-      <div className="overflow-x-auto h-screen">
+    <div className="dash_classes">
+      <div className="overflow-x-auto min-h-screen">
         <table className="table">
           {/* head */}
           <thead>
@@ -84,7 +88,7 @@ const User_Selected_Class = () => {
                   >
                     Delete
                   </button>
-                  <button onClick={() => payHandler(singleClass)} className="btn btn-ghost btn-xs  hover:bg-yellow-500">
+                  <button onClick={payHandler} className="btn btn-ghost btn-xs  hover:bg-yellow-500">
                     Pay
                   </button>
                 </th>

@@ -19,9 +19,9 @@ const HomeExtra = () => {
                   />
                 </div>
                 <div className="w-10/12 pl-4 md:pl-6">
-                  <p className="font-semibold text-gray-300 mb-3">Nobius Mayar</p>
+                  <p className="font-semibold text-gray-800 mb-3">Nobius Mayar</p>
                   <motion.p
-                    className="text-gray-400 italic"
+                    className="text-gray-700 font-medium"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -45,9 +45,9 @@ const HomeExtra = () => {
                   />
                 </div>
                 <div className="w-10/12 pl-4 md:pl-6">
-                  <p className="font-semibold text-gray-300 mb-3">Maria Saxon</p>
+                  <p className="font-semibold text-gray-800 mb-3">Maria Saxon</p>
                   <motion.p
-                    className="text-gray-400 italic"
+                    className="text-gray-700 font-medium"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -71,9 +71,9 @@ const HomeExtra = () => {
                   />
                 </div>
                 <div className="w-10/12 pl-4 md:pl-6">
-                  <p className="font-semibold text-gray-300 mb-3">Jemmy Ada</p>
+                  <p className="font-semibold text-gray-800 mb-3">Jemmy Ada</p>
                   <motion.p
-                    className="text-gray-400 italic"
+                    className="text-gray-700 font-medium"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -97,9 +97,9 @@ const HomeExtra = () => {
                   />
                 </div>
                 <div className="w-10/12 pl-4 md:pl-6">
-                  <p className="font-semibold text-gray-300 mb-3">Nobius Mayar</p>
+                  <p className="font-semibold text-gray-800 mb-3">Nobius Mayar</p>
                   <motion.p
-                    className="text-gray-400 italic"
+                    className="text-gray-700 font-medium"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
