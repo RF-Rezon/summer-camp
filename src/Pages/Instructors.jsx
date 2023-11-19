@@ -31,7 +31,7 @@ const Instructors = () => {
       <div className="container mx-auto py-6 min-h-screen">
         <div className="bg-custom bg-opacity-40 py-24 flex items-center justify-center my-10">
           <div className="text-4xl font-semibold">
-            <p>
+            <p className="text-gray-900">
               All <span className="bg-custom p-2 ml-1">Instructors</span>
             </p>
           </div>

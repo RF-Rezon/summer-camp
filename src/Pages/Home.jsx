@@ -24,8 +24,10 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className="absolute left-4 bottom-[24px]">
-            <AnimatedArrow className='h-3 w-3'/>
+            <div className="absolute left-20 bottom-52">
+            <div className="h-40 w-40">
+              <AnimatedArrow />
+            </div>
             </div>
           </div>
       </div>

@@ -6,7 +6,7 @@ function ClickSoundWrapper({ children }) {
   const [playClickSound] = useSound(pop, { volume: 0.25 });
 
   const handleClick = () => {
-    // playClickSound();
+    playClickSound();
   };
 
   return (

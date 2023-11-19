@@ -1,4 +1,5 @@
 import React from "react";
+import ClickSoundWrapper from "../../Sound/ClickSoundWrapper";
 
 const Footer = () => {
   return (
@@ -36,10 +37,11 @@ const Footer = () => {
                       placeholder="john@rhcp.com"
                       className="w-full focus:border-none focus:ring-transparent sm:text-sm p-5 outline-none"
                     />
-
+                    <ClickSoundWrapper>
                     <button className="bg-custom px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold">
                       SEND
                     </button>
+                    </ClickSoundWrapper>
                   </div>
                 </form>
               </div>
@@ -52,31 +54,31 @@ const Footer = () => {
 
                   <ul className="mt-6 space-y-4 text-sm">
                     <li>
-                      <a href="#" className="text-gray-800 font-medium text-base transition hover:">
+                      <a  className="cursor-pointer text-gray-800 font-medium text-base transition hover:">
                         1on1 Coaching
                       </a>
                     </li>
 
                     <li>
-                      <a href="#" className="text-gray-800 font-medium text-base transition hover:">
+                      <a  className="cursor-pointer text-gray-800 font-medium text-base transition hover:">
                         Company Review
                       </a>
                     </li>
 
                     <li>
-                      <a href="#" className="text-gray-800 font-medium text-base transition hover:">
+                      <a  className="cursor-pointer text-gray-800 font-medium text-base transition hover:">
                         Accounts Review
                       </a>
                     </li>
 
                     <li>
-                      <a href="#" className="text-gray-800 font-medium text-base transition hover:">
+                      <a  className="cursor-pointer text-gray-800 font-medium text-base transition hover:">
                         HR Consulting
                       </a>
                     </li>
 
                     <li>
-                      <a href="#" className="text-gray-800 font-medium text-base transition hover:">
+                      <a  className="cursor-pointer text-gray-800 font-medium text-base transition hover:">
                         SEO Optimisation
                       </a>
                     </li>
@@ -88,19 +90,19 @@ const Footer = () => {
 
                   <ul className="mt-6 space-y-4 text-sm">
                     <li>
-                      <a href="#" className="text-gray-800 font-medium text-base transition hover:">
+                      <a  className="cursor-pointer text-gray-800 font-medium text-base transition hover:">
                         About
                       </a>
                     </li>
 
                     <li>
-                      <a href="#" className="text-gray-800 font-medium text-base transition hover:">
+                      <a  className="cursor-pointer text-gray-800 font-medium text-base transition hover:">
                         Meet the Team
                       </a>
                     </li>
 
                     <li>
-                      <a href="#" className="text-gray-800 font-medium text-base transition hover:">
+                      <a  className="cursor-pointer text-gray-800 font-medium text-base transition hover:">
                         Accounts Review
                       </a>
                     </li>
@@ -112,19 +114,19 @@ const Footer = () => {
 
                   <ul className="mt-6 space-y-4 text-sm">
                     <li>
-                      <a href="#" className="text-gray-800 font-medium text-base transition hover:">
+                      <a  className="cursor-pointer text-gray-800 font-medium text-base transition hover:">
                         Contact
                       </a>
                     </li>
 
                     <li>
-                      <a href="#" className="text-gray-800 font-medium text-base transition hover:">
+                      <a  className="cursor-pointer text-gray-800 font-medium text-base transition hover:">
                         FAQs
                       </a>
                     </li>
 
                     <li>
-                      <a href="#" className="text-gray-800 font-medium text-base transition hover:">
+                      <a  className="cursor-pointer text-gray-800 font-medium text-base transition hover:">
                         Live Chat
                       </a>
                     </li>
@@ -135,19 +137,19 @@ const Footer = () => {
               <div className="mt-8 border-t border-gray-100 pt-8">
                 <ul className="flex flex-wrap gap-4 text-xs">
                   <li>
-                    <a href="#" className="text-gray-800 text-sm font-medium transition hover:">
+                    <a  className="cursor-pointer text-gray-800 text-sm font-medium transition hover:">
                       Terms & Conditions
                     </a>
                   </li>
 
                   <li>
-                    <a href="#" className="text-gray-800 text-sm font-medium transition hover:">
+                    <a  className="cursor-pointer text-gray-800 text-sm font-medium transition hover:">
                       Privacy Policy
                     </a>
                   </li>
 
                   <li>
-                    <a href="#" className="text-gray-800 text-sm font-medium transition hover:">
+                    <a  className="cursor-pointer text-gray-800 text-sm font-medium transition hover:">
                       Cookies
                     </a>
                   </li>

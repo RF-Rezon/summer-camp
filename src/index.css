@@ -13,3 +13,8 @@
 .dash_classes :not(:empty) {
   color: black;
 }
+.active{
+  border-bottom: 3px solid black;
+  padding-bottom: 3px;
+  transition: all 0.3s ease-in-out;
+}

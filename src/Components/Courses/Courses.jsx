@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import Spninner from "../../Utils/Spninner";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ClickSoundWrapper2 from "../../Sound/ClickSoundWrapper2";
 
 const Courses = () => {
   const { webUrl,  } = UseAuth();
@@ -45,12 +46,14 @@ const Courses = () => {
          <SingleCourse e={e} key={e._id}/>
        ))}
         </div>
+        <ClickSoundWrapper2>
         <div
           className="bg-custom w-1/12 mt-5 mx-auto px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold text-center"
           onClick={() => router("/classes")}
         >
-          See All
+          Discover
         </div>
+        </ClickSoundWrapper2>
       </div>
     </>
   );

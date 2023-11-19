@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../Hooks/useAuth";
 import Spninner from "../Utils/Spninner";
+import ClickSoundWrapper2 from "../Sound/ClickSoundWrapper2";
 
 const Classes = () => {
   const { user, webUrl} = UseAuth();
@@ -176,7 +177,7 @@ const Classes = () => {
                     {newSingleClass.price}
                   </span>
                 </h3>
-
+                <ClickSoundWrapper2>
                 <button
                   className={
                     newSingleClass.av_seats > 1
@@ -187,6 +188,7 @@ const Classes = () => {
                 >
                   Select
                 </button>
+                </ClickSoundWrapper2>
               </div>
               <div className="flex-1">
                 <img

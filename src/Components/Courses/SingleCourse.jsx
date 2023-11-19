@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import ClickSoundWrapper2 from '../../Sound/ClickSoundWrapper2';
 
 const SingleCourse = ({e}) => {
   const router = useNavigate();
@@ -30,12 +31,14 @@ const SingleCourse = ({e}) => {
     </div>
 
     <div className="sm:flex sm:items-end sm:justify-end">
+    <ClickSoundWrapper2>
       <div
         onClick={() => router("/classes")}
-        className="block cursor-pointer bg-custom px-5 py-3 text-center text-xs font-bold transition hover:bg-opacity-80 text-white"
+        className="block cursor-pointer bg-custom px-5 py-3 text-center text-sm font-medium transition hover:bg-opacity-80 text-white"
       >
         Get this class
       </div>
+      </ClickSoundWrapper2>
     </div>
   </div>
 </article>

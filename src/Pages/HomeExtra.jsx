@@ -6,7 +6,7 @@ const HomeExtra = () => {
     <div>
       <div className="container mx-auto">
           <section className="mb-32 text-gray-800">
-            <div className="mt-16">
+            <div className="mt-16 space-y-6">
               <div className="flex mb-12 md:mb-0">
                 <div className="w-2/12">
                   <motion.img
