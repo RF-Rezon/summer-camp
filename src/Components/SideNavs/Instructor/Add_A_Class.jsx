@@ -30,7 +30,7 @@ const Add_A_Class = () => {
 
   return (
     <div className="w-2/5 min-h-screen">
-      <div className="bg-custom bg-opacity-40 py-24 flex items-center justify-center my-10">
+      <div className="bg-custom bg-opacity-40 border-b-black border-b-[3px] py-24 flex items-center justify-center my-10">
           <div className="text-4xl font-semibold">
             <p>
               You can <span className="bg-custom p-2 ml-2">Add</span> classes here

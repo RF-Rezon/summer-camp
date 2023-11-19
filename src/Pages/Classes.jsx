@@ -33,7 +33,7 @@ const Classes = () => {
       Swal.fire({
         title: "NO LOGGED IN!",
         text: `You have to log in first.`,
-        icon: "warning",
+        icon: "error",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
         cancelButtonColor: "#d33",
@@ -137,7 +137,7 @@ const Classes = () => {
         ))}
       </div> */}
 
-      <div className="w-full flex flex-col items-center space-y-10 min-h-screen">
+      <div className="w-full flex flex-col items-center space-y-10 min-h-screen my-24">
         {filteredAprovedClasses?.map((newSingleClass) => (
           <div key={newSingleClass._id} className="w-5/6 my-10 mb-14">
             <div className="flex items-center justify-between w-full p-0.5 shadow-xl transition [animation-duration:_6s] hover:shadow-sm border-custom border-2  mb-5">

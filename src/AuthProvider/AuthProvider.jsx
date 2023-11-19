@@ -20,6 +20,7 @@ const AuthProvider = ({ children }) => {
   let [allClasses, setAllClasses] = useState([])
 
   const [user, setUser] = useState(null);
+  console.log(user)
   const [loading, setLoading] = useState(false);
 
   const provider = new GoogleAuthProvider();

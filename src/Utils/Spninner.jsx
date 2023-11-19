@@ -9,7 +9,7 @@ const Spninner = () => {
           height="100"
           width="100"
           radius={1}
-          color="#ffff"
+          color="#000"
           ariaLabel="puff-loading"
           wrapperStyle={{}}
           wrapperClass=""

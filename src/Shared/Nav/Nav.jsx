@@ -9,14 +9,28 @@ import { useEffect } from "react";
 
 const Nav = () => {
   const soundUrl = "/public/music.mp3";
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(true);
 
-  const [play, { stop }] = useSound(soundUrl, { volume: 0.1 });
+  const [play, { stop }] = useSound(soundUrl, { volume: 0.5 });
 
-  useEffect(() => {
-    isClicked ? play() : stop();
-  }, [isClicked]);
+ 
+    useEffect(() => {
+      setTimeout(() => {
+        play();
+      }, 0.2);
+    }, []);
 
+    if(isClicked == false){
+      stop();
+    }
+
+  // useEffect(()=>{
+  //   if(isClicked == false){
+  //     stop();
+  //   }else{
+  //     musicFunc()
+  //   }
+  // },[isClicked])
 
   const { user, LogOut } = UseAuth();
   const navigate = useNavigate();
@@ -47,7 +61,7 @@ const Nav = () => {
   };
   return (
     <div>
-      <header className="bg-custom bg-opacity-90 border-white py-10 pb-28 border-b-[3px] md:pb-3 md:py-3 border-b-white">
+      <header className="fixed top-0 w-full z-50 bg-custom bg-opacity-90 border-white py-10 pb-28 border-b-[3px] md:pb-3 md:py-3 border-b-white">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex md:flex-row flex-col h-16 items-center justify-between gap-4">
             <div className="md:flex md:items-center md:gap-12">
@@ -63,7 +77,7 @@ const Nav = () => {
                 <ul className="flex items-center gap-8 text-sm">
                   <li>
                     <Link
-                      className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
+                      className="text-lg font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
                       to="/"
                     >
                       Home
@@ -72,7 +86,7 @@ const Nav = () => {
 
                   <li>
                     <Link
-                      className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
+                      className="text-lg font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
                       to="/instructors"
                     >
                       Instructors
@@ -81,23 +95,23 @@ const Nav = () => {
 
                   <li>
                     <Link
-                      className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
+                      className="text-lg font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
                       to="/classes"
                     >
                       Classes
                     </Link>
                   </li>
 
+                  <li>
+                    <Link
+                      className="text-lg font-medium hover:font-semibold transition-all 0.3 sec ease-in-out text-red"
+                      to="/dashboard"
+                    >
+                      Dashboard
+                    </Link>
+                  </li>
                   {user && (
                     <>
-                      <li>
-                        <Link
-                          className="text-base font-medium hover:font-semibold transition-all 0.3 sec ease-in-out text-red"
-                          to="/dashboard"
-                        >
-                          Dashboard
-                        </Link>
-                      </li>
                       <li>
                         <Link className="avatar" to="/">
                           {user?.photoURL && (
@@ -120,7 +134,7 @@ const Nav = () => {
                     className=" bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer"
                     to="/login"
                   >
-                    Login
+                    Sign In
                   </Link>
                 </div>
               ) : (
@@ -135,7 +149,7 @@ const Nav = () => {
               )}
 
               <div className="ml-5">
-                <div className="h-10 w-10 bg-gray-950 cursor-pointer bg-transparent flex items-center justify-center rounded-full">
+                <div className="h-10 w-10 bg-gray-800 cursor-pointer bg-transparent flex items-center justify-center rounded-full">
                   <div onClick={() => setIsClicked(!isClicked)}>
                     <LuMusic />
                   </div>

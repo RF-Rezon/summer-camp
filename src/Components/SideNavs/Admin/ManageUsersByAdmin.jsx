@@ -77,9 +77,9 @@ const ManageUsersByAdmin = () => {
 
   if (isLoading) return <Spninner />;
   return (
-    <div className="dash_classes">
+    <div className="dash_classes ">
       <div>
-        <div className="overflow-x-auto min-h-screen">
+        <div className="overflow-x-auto min-h-screen py-8">
           <table className="table">
             {/* head */}
             <thead>

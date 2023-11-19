@@ -2,7 +2,7 @@ import React from 'react';
 
 const Payment = () => {
     return (
-        <div>
+        <div className='min-h-screen'>
             Payment Page bro
         </div>
     );

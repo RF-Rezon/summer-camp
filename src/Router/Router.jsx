@@ -18,6 +18,7 @@ import ManageUsersByAdmin from "./../Components/SideNavs/Admin/ManageUsersByAdmi
 import AdminPrivate from "./Private/AdminPrivate";
 import InstructorPrivate from "./Private/InstructorPrivate";
 import StudentPrivate from "./Private/StudentPrivate";
+import BasicCheck from "./Private/BasicCheck";
 
 const Router = createBrowserRouter([
   {
@@ -46,7 +47,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/dashboard",
-        element: <DashBoard />,
+        element: <BasicCheck> <DashBoard /> </BasicCheck>,
         children: [
           {
             path: "add_a_class",

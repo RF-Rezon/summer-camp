@@ -24,7 +24,7 @@ const SingleCourse = ({e}) => {
         </h3>
       </a>
 
-      <p className="mt-2 line-clamp-3 text-sm/relaxed text-gray-700">
+      <p className="mt-2 line-clamp-3 font-medium text-gray-700">
        {e.description}
       </p>
     </div>

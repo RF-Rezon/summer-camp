@@ -27,11 +27,11 @@ const PopularInstructors = () => {
         <>
           <div className="flex flex-wrap flex-col md:flex-row gap-32 items-center justify-between py-16">
               {popularTeachers.map((singleInstructor) => (
-                <div key={singleInstructor._id} className="bg-custom bg-opacity-90">
-                  <div className="w-96  shadow-lg p-5 m-2">
+                <div key={singleInstructor._id} className="bg-custom bg-opacity-60">
+                  <div className="w-96  shadow-lg p-6">
                     <div className="pb-10">
-                      <h2 className="card-title text-2xl font-bold">{singleInstructor.name}</h2>
-                      <p className="text-sm font-medium">{singleInstructor.email}</p>
+                      <h2 className="card-title text-2xl font-bold text-gray-900">{singleInstructor.name}</h2>
+                      <p className="text-base font-medium pt-2">{singleInstructor.email}</p>
                     </div>
                     <figure className="h-72">
                       <img src={singleInstructor.image} alt="instructor" className="h-full w-full  object-cover" />

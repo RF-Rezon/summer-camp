@@ -35,7 +35,7 @@ const Courses = () => {
       <div className="container mx-auto my-20">
         <div className="bg-custom bg-opacity-40 py-24 flex items-center justify-center my-10">
           <div className="text-4xl font-semibold">
-            <p className="uppercase">
+            <p className="uppercase text-gray-900">
               Popular<span className="bg-custom p-2 ml-3">Choices</span>
             </p>
           </div>
