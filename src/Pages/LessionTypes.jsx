@@ -8,10 +8,12 @@ const LessionTypes = () => {
       <div className="container mx-auto pb-10 dash_classes">
         <div>
           <div className="pb-6">
-          <div className="py-8 flex items-center justify-end my-10 bg-custom bg-opacity-40 w-1/2 border-l-[5px] border-l-custom">
+          <div className="py-8 flex items-center justify-end my-10 bg-custom bg-opacity-40 border-l-[5px] border-l-custom md:w-1/2 md:mr-auto mr-20 w-fit">
           <div className="text-4xl font-semibold space-y-5 text-end pr-5">
-              <p className="text-gray-800 text-[50px] font-semibold uppercase">Ways</p>
-              <p className="text-gray-800 uppercase">How you will <span className="bg-custom p-2 ml-1 uppercase">Learn</span></p>
+              <p className="text-gray-800 md:text-4xl font-semibold uppercase">Ways</p>
+              <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 space-x-2 md:items-center items-end">
+                <p className="text-gray-800 uppercase pl-3">How you will </p><span className="bg-custom p-2 ml-1 customWhite uppercase">Learn</span>
+              </div>
             </div>
           </div>
             <p className="text-lg font-medium text-center mx-auto py-6 pt-12 my-14">

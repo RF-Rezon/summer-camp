@@ -15,6 +15,9 @@
 }
 .active{
   border-bottom: 3px solid black;
-  padding-bottom: 3px;
+  padding-bottom: 4px;
   transition: all 0.3s ease-in-out;
+}
+.customWhite{
+  color: white !important;
 }

@@ -65,7 +65,7 @@ const Nav = () => {
 
             <div>
               <nav aria-label="Global">
-                <ul className="flex items-center gap-8 text-sm">
+                <ul className="flex items-center md:gap-8 gap-4 text-sm">
                   <li>
                   <ClickSoundWrapper>
                     <NavLink
@@ -130,7 +130,7 @@ const Nav = () => {
               </nav>
             </div>
 
-            <div className="flex items-center">
+            <div className="flex items-center mt-4 md:mt-0">
               {!user ? (
                 <div>
                   <ClickSoundWrapper>

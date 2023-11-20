@@ -37,7 +37,7 @@ const Courses = () => {
         <div className="bg-custom bg-opacity-40 py-24 flex items-center justify-center my-10">
           <div className="text-4xl font-semibold">
             <p className="uppercase text-gray-900">
-              Popular<span className="bg-custom p-2 ml-3">Choices</span>
+              Popular<span className="bg-custom p-2 md:ml-3">Choices</span>
             </p>
           </div>
         </div>
@@ -48,7 +48,7 @@ const Courses = () => {
         </div>
         <ClickSoundWrapper2>
         <div
-          className="bg-custom w-1/12 mt-5 mx-auto px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold text-center"
+          className="bg-custom w-fit mt-5 mx-auto px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold text-center"
           onClick={() => router("/classes")}
         >
           Discover
