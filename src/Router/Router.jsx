@@ -7,7 +7,6 @@ import Add_A_Class from "../Components/SideNavs/Instructor/Add_A_Class";
 import My_Classes from "../Components/SideNavs/Instructor/My_Classes";
 import User_Enrolled_Classes from "../Components/SideNavs/Student/User_Enrolled_Classes";
 import User_Selected_Class from "../Components/SideNavs/Student/User_Selected_Class";
-import Payment from "../Components/SideNavs/Student/payment";
 import HomeLayout from "../Layout/HomeLayout/HomeLayout";
 import Classes from "../Pages/Classes";
 import DashBoard from "../Pages/DashBoard";
@@ -81,10 +80,6 @@ const Router = createBrowserRouter([
             path: "enrolledClasses",
             element: <StudentPrivate><User_Enrolled_Classes /></StudentPrivate> ,
           },
-          {
-            path: "paymentPage",
-            element:  <Payment />,
-          }
         ],
       }
     ],
