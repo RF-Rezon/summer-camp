@@ -7,6 +7,7 @@ import useSound from "use-sound";
 import { useState } from "react";
 import ClickSoundWrapper from "../../Sound/ClickSoundWrapper";
 import { NavLink } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Nav = () => {
   const soundUrl = "/public/music.mp3";
@@ -53,7 +54,8 @@ const Nav = () => {
       <header className="fixed top-0 w-full z-50 bg-custom bg-opacity-90 border-white py-10 pb-28 border-b-[3px] md:pb-3 md:py-3 border-b-white">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 h-full">
           <div className="flex md:flex-row flex-col h-16 items-center justify-between gap-4">
-            <div className="md:flex md:items-center md:gap-12">
+            <motion.div whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }} className="md:flex md:items-center md:gap-12">
             <ClickSoundWrapper>
               <Link className="block text-teal-600" to="/">
                 <span className="sr-only">Home</span>
@@ -61,12 +63,15 @@ const Nav = () => {
                 <span className="hidden h-1 w-10 rounded bg-black lg:block"></span>
               </Link>
               </ClickSoundWrapper>
-            </div>
+            </motion.div>
 
-            <div>
+            <div>  
               <nav aria-label="Global">
                 <ul className="flex items-center md:gap-8 gap-4 text-sm">
-                  <li>
+                  <motion.li 
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  >
                   <ClickSoundWrapper>
                     <NavLink
                       className="text-lg font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
@@ -76,9 +81,10 @@ const Nav = () => {
                       Home
                     </NavLink>
                     </ClickSoundWrapper>
-                  </li>
+                  </motion.li>
 
-                  <li>
+                  <motion.li whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}>
                   <ClickSoundWrapper>
                     <NavLink
                       className="text-lg font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
@@ -88,9 +94,10 @@ const Nav = () => {
                       Instructors
                     </NavLink>
                     </ClickSoundWrapper>
-                  </li>
+                  </motion.li>
 
-                  <li>
+                  <motion.li whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}>
                   <ClickSoundWrapper>
                     <NavLink
                       className="text-lg font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
@@ -100,9 +107,10 @@ const Nav = () => {
                       Classes
                     </NavLink>
                     </ClickSoundWrapper>
-                  </li>
+                  </motion.li>
 
-                  <li>
+                  <motion.li whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}>
                   <ClickSoundWrapper>
                     <NavLink
                       className="text-lg font-medium hover:font-semibold transition-all 0.3 sec ease-in-out text-red"
@@ -112,18 +120,20 @@ const Nav = () => {
                       Dashboard
                     </NavLink>
                     </ClickSoundWrapper>
-                  </li>
+                  </motion.li>
                   {user && (
                     <>
-                      <li>
+                      <motion.li whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}>
                         <Link className="avatar" to="/">
                           {user?.photoURL && (
-                            <div className="w-10 h-10 rounded-full">
+                            <motion.div whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }} className="w-10 h-10 rounded-full">
                               <img src={user.photoURL} />
-                            </div>
+                            </motion.div>
                           )}
                         </Link>
-                      </li>
+                      </motion.li>
                     </>
                   )}
                 </ul>
@@ -132,7 +142,8 @@ const Nav = () => {
 
             <div className="flex items-center mt-4 md:mt-0">
               {!user ? (
-                <div>
+                <motion.div whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}>
                   <ClickSoundWrapper>
                   <Link
                     className=" bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer"
@@ -141,9 +152,10 @@ const Nav = () => {
                     Sign In
                   </Link>
                   </ClickSoundWrapper>
-                </div>
+                </motion.div>
               ) : (
-                <div>
+                <motion.div whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}>
                   <ClickSoundWrapper>
                   <Link
                     className=" bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer"
@@ -152,7 +164,7 @@ const Nav = () => {
                     Log Out
                   </Link>
                   </ClickSoundWrapper>
-                </div>
+                </motion.div>
               )}
 
               <div className="ml-5">

@@ -3,7 +3,6 @@ import axios from "axios";
 import React from "react";
 import Spninner from "../Utils/Spninner";
 import UseAuth from "../Hooks/useAuth";
-const token = localStorage.getItem("access-token");
 
 const Instructors = () => {
   const { webUrl } = UseAuth();
@@ -33,20 +32,20 @@ const Instructors = () => {
               </div>
             </div>
             <div className="flex flex-wrap flex-col md:flex-row gap-32 items-center justify-between py-16">
-              {totalInstructors.map((singleInstructor) => (
-                <div key={singleInstructor._id} className="bg-custom bg-opacity-60">
+              {totalInstructors?.map((singleInstructor) => (
+                <div key={singleInstructor?._id} className="bg-custom bg-opacity-60">
                   <div className="w-96 shadow-lg p-6">
                     <div className="pb-10">
                       <h2 className="card-title text-2xl font-bold text-gray-900">
-                        {singleInstructor.name}
+                        {singleInstructor?.name}
                       </h2>
                       <p className="text-base font-medium pt-2">
-                        {singleInstructor.email}
+                        {singleInstructor?.email}
                       </p>
                     </div>
                     <figure className="h-72">
                       <img
-                        src={singleInstructor.image}
+                        src={singleInstructor?.image}
                         alt="instructor"
                         className="h-full w-full  object-cover"
                       />
