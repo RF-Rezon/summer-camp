@@ -29,39 +29,39 @@ const Partners = () => {
              
              <Marquee direction='right' speed={40}>
               <div className='p-4 mr-4 h-24 w-full my-auto'>
-                      <img className='w-full h-full object-cover' src="/public/atticus.svg" alt="" />
+                      <img className='w-full h-full object-cover' src="/atticus.svg"/>
               </div>
               <div className='p-4 mr-4 h-24 w-full my-auto'>
-                      <img className='w-full h-full object-cover' src="/public/channel.svg" alt="" />
+                      <img className='w-full h-full object-cover' src="/channel.svg"/>
               </div>
               <div className='p-4 mr-4 h-24 w-full my-auto'>
-                      <img className='w-full h-full object-cover' src="/public/cytora.svg" alt="" />
+                      <img className='w-full h-full object-cover' src="/cytora.svg"/>
               </div>
               <div className='p-4 mr-4 h-24 w-full my-auto'>
-                      <img className='w-full h-full object-cover' src="/public/harmon.svg" alt="" />
+                      <img className='w-full h-full object-cover' src="/harmon.svg"/>
               </div>
               <div className='p-4 mr-4 h-24 w-full my-auto'>
-                      <img className='w-full h-full object-cover' src="/public/loupedeck.svg" alt="" />
+                      <img className='w-full h-full object-cover' src="/loupedeck.svg"/>
               </div>
               <div className='p-4 mr-4 h-24 w-full my-auto'>
-                      <img className='w-full h-full object-cover' src="/public/point.svg" alt="" />
+                      <img className='w-full h-full object-cover' src="/point.svg"/>
               </div>
               </Marquee>
               <Marquee direction='left' speed={60}> 
               <div className='p-4 mr-4 h-24 w-full my-auto'>
-                      <img className='w-full h-full object-cover' src="/public/rhode.svg" alt="" />
+                      <img className='w-full h-full object-cover' src="/rhode.svg"/>
               </div>
               <div className='p-4 mr-4 h-24 w-full my-auto'>
-                      <img className='w-full h-full object-cover' src="/public/roto.svg" alt="" />
+                      <img className='w-full h-full object-cover' src="/roto.svg"/>
               </div>
               <div className='p-4 mr-4 h-24 w-full my-auto'>
-                      <img className='w-full h-full object-cover' src="/public/sourcy.svg" alt="" />
+                      <img className='w-full h-full object-cover' src="/sourcy.svg"/>
               </div>
               <div className='p-4 mr-4 h-24 w-full my-auto'>
-                      <img className='w-full h-full object-cover' src="/public/systems-studio.svg" alt="" />
+                      <img className='w-full h-full object-cover' src="/systems-studio.svg"/>
               </div>
               <div className='p-4 mr-4 h-24 w-full my-auto'>
-                      <img className='w-full h-full object-cover' src="/public/tentree.svg" alt="" />
+                      <img className='w-full h-full object-cover' src="/tentree.svg"/>
               </div>
               </Marquee>
          </div>

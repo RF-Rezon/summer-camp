@@ -6,8 +6,18 @@ import Spninner from "../../Utils/Spninner";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ClickSoundWrapper2 from "../../Sound/ClickSoundWrapper2";
+import { motion, useAnimation } from "framer-motion"; 
+import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 const Courses = () => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+  useEffect(() => {
+    if (inView) {
+      controls.start({ opacity: 1 });
+    }
+  }, [controls, inView]);
   const { webUrl,  } = UseAuth();
   const router = useNavigate();
 
@@ -31,16 +41,21 @@ const Courses = () => {
 
   
   let topFourClasses = filteredAprovedClasses?.slice(0,4);
+
+  
+
   return (
     <>
       <div className="container mx-auto my-20">
-        <div className="bg-custom bg-opacity-40 py-24 flex items-center justify-center my-10">
+        <motion.div ref={ref} initial={{ opacity: 0 }}
+            animate={controls}
+            transition={{ duration: 1 }} className="bg-custom bg-opacity-40 py-24 flex items-center justify-center my-10">
           <div className="text-4xl font-semibold">
             <p className="uppercase text-gray-900">
               Popular<span className="bg-custom p-2 md:ml-3">Choices</span>
             </p>
           </div>
-        </div>
+        </motion.div>
         <div className="space-y-10 my-20">
        { topFourClasses?.map(e=> (
          <SingleCourse e={e} key={e._id}/>

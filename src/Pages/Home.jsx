@@ -65,11 +65,7 @@ const Home = () => {
       {/* ..................................................................................... */}
       <div className="container mx-auto py-6 pt-10 mt-20">
         <div className="pb-10">
-          <motion.div
-            ref={ref}
-            initial={{ opacity: 0, x:  120 }}
-            animate={controls}
-            transition={{ duration: 1 }}
+          <div
             className="py-8 flex items-center justify-start my-10 bg-custom bg-opacity-40 border-r-[5px] border-r-custom md:w-1/2 md:ml-auto ml-20"
           >
             <div className="text-4xl font-semibold space-y-5 text-start pl-5">
@@ -78,7 +74,7 @@ const Home = () => {
                 <span className="bg-custom p-2">INSTRUCTORS</span>
               </p>
             </div>
-          </motion.div>
+          </div>
         </div>
         <PopularInstructors />
       </div>
