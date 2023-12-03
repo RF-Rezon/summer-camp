@@ -7,41 +7,70 @@ import UseAuth from "../../../Hooks/useAuth";
 const token = localStorage.getItem("access-token");
 
 const User_Selected_Class = () => {
-  const {user, webUrl} = UseAuth();
-    const navigate = useNavigate();
+  const { user, webUrl } = UseAuth();
+  const { setsinglePayClass } = UseAuth();
+  const navigate = useNavigate();
 
-  const { data: singleCardData = [], isLoading, refetch } = useQuery({
+  const {
+    data: singleCardData = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["takenSingleCourse"],
     queryFn: async () => {
-      const res = await axios.get(`${webUrl}/classTakenStudents/${user.email}`,
-      );
+      const res = await axios.get(`${webUrl}/classTakenStudents/${user.email}`);
       return res.data;
-    }
+    },
   });
 
   const deleteHandler = (singleCourse) => {
     const id = singleCourse._id;
-    axios.delete(`${webUrl}/classTakenStudents/delete/${id}`,
-    )
-    .then(res=>{
-        Swal.fire({
-            icon: "success",
-            title: "You deleted this class"
-          }),
-          refetch();
-    })
+    axios.delete(`${webUrl}/classTakenStudents/delete/${id}`).then((res) => {
+      Swal.fire({
+        icon: "success",
+        title: "You deleted this class",
+      }),
+        refetch();
+    });
   };
-  const payHandler = () => {
-    Swal.fire({
-      title: "You want pay!",
-      text: `Thanks for that! No money. I will teach you for free. Take love😊💖`,
-      icon: "success"
-    })
-  };
+  // const payHandler = (singleClassId) => {
+  //   navigate("/payment");
+  //   setsinglePayClass(singleClassId);
+  // };
+//  >>>>>>>>>>>>>>>>>>>> First Process >>>>>>>>>>>>>>>>>>>>>>>>>
+  // const checkout = async (singlePaidClass) => {
+  //   console.log(singlePaidClass)
+  //   const courses = [
+  //     {
+  //       id: singlePaidClass._id,
+  //       price: singlePaidClass.price,
+  //       email: singlePaidClass.email
+  //     }
+  //   ]
+  //   try {
+  //       const res = await axios.post(`${webUrl}/checkout`, courses, {
+  //         "Content-Type": "application/json"}
+  //       );
+  //       console.log("response not comming")
+  //       console.log(res)
+  //       window.location = res.data.url;
+
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // };
+
+  //  >>>>>>>>>>>>>>>>>>>> Second Process >>>>>>>>>>>>>>>>>>>>>>>>>
+
+  const checkout = async (singlePaidClass) => {
+    navigate("/payment");
+    console.log(singlePaidClass)
+    setsinglePayClass(singlePaidClass);
+    // navigate("/payment", { state: { singlePaidClass } });
+  }
 
   return (
-    <div className="mt-96 md:mt-10" >
-      <div className="dash_classes">
+    <div className="mt-96 md:mt-10">      <div className="dash_classes">
         <div className="overflow-x-auto min-h-screen">
           <table className="table">
             {/* head */}
@@ -78,7 +107,11 @@ const User_Selected_Class = () => {
                     >
                       Delete
                     </button>
-                    <button onClick={payHandler} className="btn btn-ghost btn-xs  hover:bg-yellow-500">
+                    {/* onClick={()=>payHandler(singleClass)} */}
+                    <button
+                      onClick={()=>checkout(singleClass)}
+                      className="btn btn-ghost btn-xs  hover:bg-yellow-500"
+                    >
                       Pay
                     </button>
                   </th>

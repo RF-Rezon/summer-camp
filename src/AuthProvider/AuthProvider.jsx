@@ -17,7 +17,8 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   let webUrl = import.meta.env.VITE_WEB_URL;
 
-  let [allClasses, setAllClasses] = useState([])
+  let [allClasses, setAllClasses] = useState([]);
+  let [singlePayClass, setsinglePayClass] = useState(null);
 
   const [user, setUser] = useState(null);
 
@@ -69,7 +70,8 @@ const AuthProvider = ({ children }) => {
     updateUser,
     webUrl,
     allClasses, 
-    setAllClasses
+    setAllClasses,
+    singlePayClass, setsinglePayClass
   };
 
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;

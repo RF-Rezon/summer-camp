@@ -5,6 +5,9 @@ import Register from "../Components/Register/Register";
 import ManageClassesByAdmin from "../Components/SideNavs/Admin/ManageClassesByAdmin";
 import Add_A_Class from "../Components/SideNavs/Instructor/Add_A_Class";
 import My_Classes from "../Components/SideNavs/Instructor/My_Classes";
+import Cancel from "../Components/SideNavs/Student/Cancel";
+import Payment from "../Components/SideNavs/Student/Payment";
+import Success from "../Components/SideNavs/Student/Success";
 import User_Enrolled_Classes from "../Components/SideNavs/Student/User_Enrolled_Classes";
 import User_Selected_Class from "../Components/SideNavs/Student/User_Selected_Class";
 import HomeLayout from "../Layout/HomeLayout/HomeLayout";
@@ -15,9 +18,9 @@ import Home from "../Pages/Home";
 import Instructors from "../Pages/Instructors";
 import ManageUsersByAdmin from "./../Components/SideNavs/Admin/ManageUsersByAdmin";
 import AdminPrivate from "./Private/AdminPrivate";
+import BasicCheck from "./Private/BasicCheck";
 import InstructorPrivate from "./Private/InstructorPrivate";
 import StudentPrivate from "./Private/StudentPrivate";
-import BasicCheck from "./Private/BasicCheck";
 
 const Router = createBrowserRouter([
   {
@@ -43,6 +46,18 @@ const Router = createBrowserRouter([
       {
         path: "/classes",
         element: <Classes />,
+      },
+      {
+        path: "payment",
+        element: <StudentPrivate><Payment /></StudentPrivate> ,
+      },
+      {
+        path: "success",
+        element: <StudentPrivate><Success /></StudentPrivate> ,
+      },
+      {
+        path: "cancel",
+        element: <StudentPrivate><Cancel /></StudentPrivate> ,
       },
       {
         path: "/dashboard",

@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
-import Spninner from "../Utils/Spninner";
 import UseAuth from "../Hooks/useAuth";
+import Spninner from "../Utils/Spninner";
 
 const Instructors = () => {
   const { webUrl } = UseAuth();
