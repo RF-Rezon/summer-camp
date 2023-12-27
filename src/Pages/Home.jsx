@@ -1,15 +1,15 @@
+import { motion, useAnimation } from "framer-motion";
 import React from "react";
-import HomeExtra from "./HomeExtra";
-import PopularInstructors from "./PopularInstructors";
 import Courses from "../Components/Courses/Courses";
 import AnimatedArrow from "../Utils/AnimatedArrow";
+import HomeExtra from "./HomeExtra";
 import LessionTypes from "./LessionTypes";
 import Partners from "./Partners";
-import headerVideo from "/public/video.mp4";
-import { motion, useAnimation } from "framer-motion";
+import PopularInstructors from "./PopularInstructors";
+import headerVideo from "/video.mp4";
 
-import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 
 const Home = () => {
@@ -38,7 +38,7 @@ const Home = () => {
             <motion.div
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 1.5 }}
               className="bg-custom bg-opacity-60 p-5"
             >
               <p className="text-[30px] md:text-[50px] font-semibold uppercase mb-4 md:mb-0 mt-2 md:mt-0">
@@ -63,7 +63,7 @@ const Home = () => {
       {/* ........................................................................................... */}
       <Courses />
       {/* ..................................................................................... */}
-      <div className="container mx-auto py-6 pt-10 mt-20">
+      <div className="container mx-auto py-6 pt-10 mt-20 pb-28">
         <div className="pb-10">
           <div
             className="py-8 flex items-center justify-start my-10 bg-custom bg-opacity-40 border-r-[5px] border-r-custom md:w-1/2 md:ml-auto ml-20"
@@ -85,7 +85,7 @@ const Home = () => {
           ref={ref}
           initial={{ opacity: 0, x:  -150 }}
           animate={controls}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.5 }}
           className="py-8 flex items-center justify-end my-10 bg-custom bg-opacity-40 border-l-[5px] border-l-custom md:w-1/2 md:mr-auto mr-20 w-fit">
             <div className="text-4xl font-semibold space-y-5 text-end pr-5">
               <p className="text-gray-800 px-3 md:px-0 md:text-4xl font-semibold uppercase text-end">

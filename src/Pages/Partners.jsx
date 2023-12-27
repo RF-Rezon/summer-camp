@@ -1,7 +1,6 @@
-import React from 'react'
+import { motion, useAnimation } from "framer-motion";
+import React, { useEffect } from 'react';
 import Marquee from 'react-fast-marquee';
-import { motion, useAnimation } from "framer-motion"; 
-import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 const Partners = () => {
@@ -20,7 +19,7 @@ const Partners = () => {
           <div className="pb-6 py-16">
           <motion.div ref={ref} initial={{ opacity: 0, y:  160 }}
             animate={controls}
-            transition={{ duration: 1 }} className="py-8 flex items-center justify-center my-10 bg-custom bg-opacity-40 w-1/3 mx-auto mb-14">
+            transition={{ duration: 1.5 }} className="py-8 flex items-center justify-center my-10 bg-custom bg-opacity-40 w-1/3 mx-auto mb-14">
           <div className="text-[50px] font-semibold space-y-5 text-end pr-5">
               <p className="text-gray-800 uppercase"><span className="bg-custom p-2 ml-1 uppercase">Partners</span></p>
             </div>

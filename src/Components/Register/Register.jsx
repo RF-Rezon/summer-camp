@@ -272,7 +272,7 @@ const Register = () => {
                 </p>
                 <input
                   type="submit"
-                  className="bg-custom px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold"
+                  className="hover:bg-teal-400 bg-custom active:bg-teal-400 transition duration-500 px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold"
                   value="Sign Up"
                 />
               </div>

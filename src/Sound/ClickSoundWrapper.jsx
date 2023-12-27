@@ -1,6 +1,6 @@
 import React from "react";
 import useSound from "use-sound";
-import pop from "/public/pop.mp3";
+import pop from "/pop.mp3";
 
 function ClickSoundWrapper({ children }) {
   const [playClickSound] = useSound(pop, { volume: 0.25 });

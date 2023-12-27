@@ -1,14 +1,13 @@
-import React from "react";
-import SingleCourse from "./singleCourse";
-import UseAuth from "../../Hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
-import Spninner from "../../Utils/Spninner";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import ClickSoundWrapper2 from "../../Sound/ClickSoundWrapper2";
-import { motion, useAnimation } from "framer-motion"; 
-import { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
+import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
+import { useNavigate } from "react-router-dom";
+import UseAuth from "../../Hooks/useAuth";
+import ClickSoundWrapper2 from "../../Sound/ClickSoundWrapper2";
+import Spninner from "../../Utils/Spninner";
+import SingleCourse from "./singleCourse";
 
 const Courses = () => {
   const controls = useAnimation();
@@ -49,7 +48,7 @@ const Courses = () => {
       <div className="container mx-auto my-20">
         <motion.div ref={ref} initial={{ opacity: 0 }}
             animate={controls}
-            transition={{ duration: 1 }} className="bg-custom bg-opacity-40 py-24 flex items-center justify-center my-10">
+            transition={{ duration: 1.5 }} className="bg-custom bg-opacity-40 py-24 flex items-center justify-center my-10">
           <div className="text-4xl font-semibold">
             <p className="uppercase text-gray-900">
               Popular<span className="bg-custom p-2 md:ml-3">Choices</span>
@@ -63,7 +62,7 @@ const Courses = () => {
         </div>
         <ClickSoundWrapper2>
         <div
-          className="bg-custom w-fit mt-5 mx-auto px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold text-center"
+          className="hover:bg-teal-400 bg-custom active:bg-teal-400 transition duration-500 w-fit mt-5 mx-auto px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold text-center"
           onClick={() => router("/classes")}
         >
           Discover

@@ -1,7 +1,6 @@
-import React from "react";
+import { motion, useAnimation } from "framer-motion";
+import React, { useEffect } from "react";
 import { LuClipboardCheck, LuHeartHandshake, LuPlayCircle, LuRadio, LuTouchpad } from "react-icons/lu";
-import { motion, useAnimation } from "framer-motion"; 
-import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
 
@@ -25,7 +24,7 @@ const LessionTypes = () => {
           <motion.div ref={ref}
             initial={{ opacity: 0, x:  -150 }}
             animate={controls}
-            transition={{ duration: 1 }} className="py-8 flex items-center justify-end my-10 bg-custom bg-opacity-40 border-l-[5px] border-l-custom md:w-1/2 md:mr-auto mr-20 w-fit">
+            transition={{ duration: 1.5 }} className="py-8 flex items-center justify-end my-10 bg-custom bg-opacity-40 border-l-[5px] border-l-custom md:w-1/2 md:mr-auto mr-20 w-fit">
           <div className="text-4xl font-semibold space-y-5 text-end pr-5">
               <p className="text-gray-800 md:text-4xl font-semibold uppercase">Ways</p>
               <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 space-x-2 md:items-center items-end">

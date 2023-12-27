@@ -1,16 +1,14 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import UseAuth from "../../Hooks/useAuth";
-import { LuMusic } from "react-icons/lu";
-import useSound from "use-sound";
-import { useState } from "react";
-import ClickSoundWrapper from "../../Sound/ClickSoundWrapper";
-import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import { LuMusic } from "react-icons/lu";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useSound from "use-sound";
+import UseAuth from "../../Hooks/useAuth";
+import ClickSoundWrapper from "../../Sound/ClickSoundWrapper";
 
 const Nav = () => {
-  const soundUrl = "/public/music.mp3";
+  const soundUrl = "/music.mp3";
   const [isClicked, setIsClicked] = useState(false);
 
   const [play, { stop }] = useSound(soundUrl, { volume: 0.5 });
@@ -146,7 +144,7 @@ const Nav = () => {
                 whileTap={{ scale: 0.95 }}>
                   <ClickSoundWrapper>
                   <Link
-                    className=" bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer"
+                    className=" hover:bg-custom bg-teal-700 active:bg-custom transition duration-500 px-5 py-2.5 text-base font-medium shadow cursor-pointer"
                     to="/login"
                   >
                     Sign In
@@ -158,7 +156,7 @@ const Nav = () => {
                 whileTap={{ scale: 0.95 }}>
                   <ClickSoundWrapper>
                   <Link
-                    className=" bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer"
+                    className=" hover:bg-custom bg-teal-700 active:bg-custom transition duration-500 px-5 py-2.5 text-base font-medium shadow cursor-pointer"
                     onClick={handleLogOut}
                   >
                     Log Out
