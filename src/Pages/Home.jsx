@@ -1,15 +1,14 @@
-import React from "react";
-import HomeExtra from "./HomeExtra";
-import PopularInstructors from "./PopularInstructors";
+import { motion, useAnimation } from "framer-motion";
 import Courses from "../Components/Courses/Courses";
 import AnimatedArrow from "../Utils/AnimatedArrow";
+import HomeExtra from "./HomeExtra";
 import LessionTypes from "./LessionTypes";
 import Partners from "./Partners";
+import PopularInstructors from "./PopularInstructors";
 import headerVideo from "/public/video.mp4";
-import { motion, useAnimation } from "framer-motion";
 
-import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 
 
 const Home = () => {
@@ -24,7 +23,7 @@ const Home = () => {
   }, [controls, inView]);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <div className="mx-auto min-h-screen space-y-88">
         <div className="relative">
           <video
@@ -63,7 +62,7 @@ const Home = () => {
       {/* ........................................................................................... */}
       <Courses />
       {/* ..................................................................................... */}
-      <div className="container mx-auto py-6 pt-10 mt-20">
+      <div className="container mx-auto py-6 pt-10">
         <div className="pb-10">
           <div
             className="py-8 flex items-center justify-start my-10 bg-custom bg-opacity-40 border-r-[5px] border-r-custom md:w-1/2 md:ml-auto ml-20"
@@ -79,7 +78,7 @@ const Home = () => {
         <PopularInstructors />
       </div>
       {/* ............................................................................................... */}
-      <div className="container mx-auto">
+      <div className="container mx-auto mt-28">
         <div className="pb-10">
           <motion.div 
           ref={ref}

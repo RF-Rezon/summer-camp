@@ -1,16 +1,14 @@
-import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../Hooks/useAuth";
-import Spninner from "../Utils/Spninner";
 import ClickSoundWrapper2 from "../Sound/ClickSoundWrapper2";
+import Spninner from "../Utils/Spninner";
 
 const Classes = () => {
-  const { user, webUrl} = UseAuth();
+  const { user, webUrl } = UseAuth();
   const navigate = useNavigate();
-
 
   const fetchedNewAddedClass = async () => {
     const res = await axios.get(`${webUrl}/newAddedClass`);
@@ -18,7 +16,6 @@ const Classes = () => {
   };
 
   const handleTakingClass = (specificClass) => {
-   
     const obj = {
       email: user?.email,
       name: user?.displayName,
@@ -77,13 +74,21 @@ const Classes = () => {
 
   if (isLoading) return <Spninner />;
   return (
-    <div>
-     
-      <div className="md:mt-28 mt-52">
-        <div className="w-full flex flex-col items-center space-y-10 min-h-screen my-24">
+    <div className="py-6 min-h-screen bg-white">
+      {/* md:mt-28 */}
+      <div
+        className="md:mt-28 mt-48">
+           <div className="bg-custom bg-opacity-40 py-24 flex items-center justify-center my-10">
+              <div className="text-4xl font-semibold">
+                <p className="text-gray-900">
+                  All <span className="bg-custom p-2 ml-1">Classes</span>
+                </p>
+              </div>
+            </div>
+        <div className="w-full flex flex-col items-center space-y-10 min-h-screen my-10">
           {filteredAprovedClasses?.map((newSingleClass) => (
             <div key={newSingleClass._id} className="w-5/6 my-10 mb-14">
-              <div className="flex flex-col md:flex-row items-center justify-between w-full p-0.5 shadow-xl transition [animation-duration:_6s] hover:shadow-sm border-custom border-2  mb-5">
+              <div className="flex flex-col md:flex-row items-center justify-between w-full p-0.5 shadow-sm transition [animation-duration:_6s] hover:shadow-xl border-custom border-2  mb-5 ">
                 <div className="bg-white p-10 basis-3/4">
                   <h3 className="mt-0.5 text-lg font-semibold text-gray-900">
                     Class Name:
@@ -119,16 +124,16 @@ const Classes = () => {
                     </span>
                   </h3>
                   <ClickSoundWrapper2>
-                  <button
-                    className={
-                      newSingleClass.av_seats > 1
-                        ? "bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer mt-10"
-                        : "btn-disabled bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer mt-10"
-                    }
-                    onClick={() => handleTakingClass(newSingleClass)}
-                  >
-                    Select
-                  </button>
+                    <button
+                      className={
+                        newSingleClass.av_seats > 1
+                          ? "bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer mt-10"
+                          : "btn-disabled bg-teal-700 px-5 py-2.5 text-base font-medium shadow cursor-pointer mt-10"
+                      }
+                      onClick={() => handleTakingClass(newSingleClass)}
+                    >
+                      Select
+                    </button>
                   </ClickSoundWrapper2>
                 </div>
                 <div className="flex-1">

@@ -1,4 +1,3 @@
-import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../Components/Login/Login";
 import Register from "../Components/Register/Register";
@@ -15,9 +14,9 @@ import Home from "../Pages/Home";
 import Instructors from "../Pages/Instructors";
 import ManageUsersByAdmin from "./../Components/SideNavs/Admin/ManageUsersByAdmin";
 import AdminPrivate from "./Private/AdminPrivate";
+import BasicCheck from "./Private/BasicCheck";
 import InstructorPrivate from "./Private/InstructorPrivate";
 import StudentPrivate from "./Private/StudentPrivate";
-import BasicCheck from "./Private/BasicCheck";
 
 const Router = createBrowserRouter([
   {
@@ -38,7 +37,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/instructors",
-        element: <div  className="container mx-auto"><Instructors /></div>,
+        element: <Instructors />,
       },
       {
         path: "/classes",

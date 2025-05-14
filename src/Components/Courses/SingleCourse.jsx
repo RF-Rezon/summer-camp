@@ -1,4 +1,3 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import ClickSoundWrapper2 from '../../Sound/ClickSoundWrapper2';
 
@@ -7,7 +6,7 @@ const SingleCourse = ({e}) => {
   return (
     <div>
       <div>
-      <article className="flex bg-white transition hover:shadow-xl">
+      <article className="flex bg-white transition drop-shadow-xl hover:shadow-2xl">
 
   <div className="hidden sm:block sm:basis-56">
     <img

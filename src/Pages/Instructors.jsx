@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
-import Spninner from "../Utils/Spninner";
 import UseAuth from "../Hooks/useAuth";
+import Spninner from "../Utils/Spninner";
 
 const Instructors = () => {
   const { webUrl } = UseAuth();
@@ -22,7 +21,7 @@ const Instructors = () => {
   if (isLoading) return <Spninner />;
   return (
     <>
-      <div className="container mx-auto py-6 min-h-screen">
+      <div className="py-6 min-h-screen bg-white">
           <div className="md:mt-28 mt-48">
             <div className="bg-custom bg-opacity-40 py-24 flex items-center justify-center my-10">
               <div className="text-4xl font-semibold">
@@ -31,10 +30,10 @@ const Instructors = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-wrap flex-col md:flex-row gap-32 items-center justify-between py-16">
-              {totalInstructors?.map((singleInstructor) => (
+            <div className="w-5/6 my-10 mb-14 mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-7 gap-y-20 my-14 mb-24 mt-20">{totalInstructors?.map((singleInstructor) => (
                 <div key={singleInstructor?._id} className="bg-custom bg-opacity-60">
-                  <div className="w-96 shadow-lg p-6">
+                  <div className="w-full shadow-lg px-4 pt-6 pb-5">
                     <div className="pb-10">
                       <h2 className="card-title text-2xl font-bold text-gray-900">
                         {singleInstructor?.name}
@@ -52,7 +51,8 @@ const Instructors = () => {
                     </figure>
                   </div>
                 </div>
-              ))}
+              ))}</div>
+              
             </div>
                   </div>
           </div>

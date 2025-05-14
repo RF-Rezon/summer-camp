@@ -63,7 +63,7 @@ const Courses = () => {
         </div>
         <ClickSoundWrapper2>
         <div
-          className="bg-custom w-fit mt-5 mx-auto px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold text-center"
+          className="bg-custom w-fit mt-5 mx-auto px-5 py-4 text-base font-semibold text-white cursor-pointer hover:font-bold text-center hover:scale-105 transition-all"
           onClick={() => router("/classes")}
         >
           Discover
