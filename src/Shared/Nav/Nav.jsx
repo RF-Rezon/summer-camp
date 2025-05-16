@@ -1,13 +1,11 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import UseAuth from "../../Hooks/useAuth";
-import { LuMusic } from "react-icons/lu";
-import useSound from "use-sound";
-import { useState } from "react";
-import ClickSoundWrapper from "../../Sound/ClickSoundWrapper";
-import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { useState } from "react";
+import { LuMusic } from "react-icons/lu";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useSound from "use-sound";
+import UseAuth from "../../Hooks/useAuth";
+import ClickSoundWrapper from "../../Sound/ClickSoundWrapper";
 
 const Nav = () => {
   const soundUrl = "/public/music.mp3";
@@ -59,7 +57,7 @@ const Nav = () => {
             <ClickSoundWrapper>
               <Link className="block text-teal-600" to="/">
                 <span className="sr-only">Home</span>
-                <p className="text-2xl font-semibold">SOUNDSCAPE</p>
+                <p className= "text-3xl md:text-2xl font-semibold">SOUNDSCAPE</p>
                 <span className="hidden h-1 w-10 rounded bg-black lg:block"></span>
               </Link>
               </ClickSoundWrapper>
@@ -74,7 +72,7 @@ const Nav = () => {
                   >
                   <ClickSoundWrapper>
                     <NavLink
-                      className="text-lg font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
+                      className="text-lg transition-all 0.3 sec ease-in-out"
                       exact activeClassName="active"
                       to="/"
                     >
@@ -87,7 +85,7 @@ const Nav = () => {
                   whileTap={{ scale: 0.95 }}>
                   <ClickSoundWrapper>
                     <NavLink
-                      className="text-lg font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
+                      className="text-lg transition-all 0.3 sec ease-in-out"
                       to="/instructors"
                       activeClassName="active"
                     >
@@ -100,7 +98,7 @@ const Nav = () => {
                   whileTap={{ scale: 0.95 }}>
                   <ClickSoundWrapper>
                     <NavLink
-                      className="text-lg font-medium hover:font-semibold transition-all 0.3 sec ease-in-out"
+                      className="text-lg transition-all 0.3 sec ease-in-out"
                       to="/classes"
                       activeClassName="active"
                     >
@@ -113,7 +111,7 @@ const Nav = () => {
                   whileTap={{ scale: 0.95 }}>
                   <ClickSoundWrapper>
                     <NavLink
-                      className="text-lg font-medium hover:font-semibold transition-all 0.3 sec ease-in-out text-red"
+                      className="text-lg transition-all 0.3 sec ease-in-out text-red"
                       to="/dashboard"
                       activeClassName="active"
                     >

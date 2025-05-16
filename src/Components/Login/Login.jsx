@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -17,6 +18,8 @@ const Login = () => {
     watch,
     formState: { errors },
   } = useForm();
+
+  const [eye, setEye] = useState(true);
 
 
   const handleGoogleLogin = () => {
@@ -62,19 +65,21 @@ const Login = () => {
       });
   };
 
-  const handleHide = () => {};
+  const handleHide = () => {
+    setEye(!eye);
+  };
 
   return (
-    <section className="h-screen mt-24 text-white">
+    <section className="h-screen mt-52 md:mt-24 text-white">
 
           <div className="relative h-full w-full">
             <img
               alt="Welcome"
               src="https://i.ibb.co/JKzhFW9/pexels-elijah-o-donnell-4721569.jpg"
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover "
             />
              <div className="absolute h-full w-full flex items-center justify-center">
-               <div className="px-4 py-12 sm:px-6 sm:py-16 w-1/2 lg:px-8 lg:py-24 backdrop-blur-md bg-white/10 border">
+               <div className="px-4 py-12 sm:px-6 sm:py-16 w-full md:w-1/2 lg:px-8 lg:py-24 backdrop-blur-md bg-white/10 border mx-8 md:mx-0">
                            <div className="mx-auto max-w-lg text-center pb-6">
                 <h1 className="text-3xl font-bold text-white sm:text-3xl">LOGIN</h1>
                            </div>
@@ -90,7 +95,7 @@ const Login = () => {
                     />
                     <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                       <svg
-                        xmlns="http://www.w3.org/2000/svg"
+                        
                         className="h-4 w-4 text-gray-400"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -110,7 +115,7 @@ const Login = () => {
                   <label className="sr-only">Password</label>
                   <div className="relative">
                     <input
-                      type="password"
+                      type={eye ? "password" : "text"}
                       {...register("password")}
                       className="w-full  border-gray-200 p-4 pe-12 text-base font-medium shadow-sm text-white"
                       placeholder="Enter password"
@@ -118,8 +123,8 @@ const Login = () => {
                     <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                       <svg
                         onClick={handleHide}
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 text-gray-400"
+                        
+                        className="h-4 w-4 text-gray-400 cursor-pointer"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -140,7 +145,7 @@ const Login = () => {
                     </span>
                   </div>
                 </div>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between pt-3">
                   <p className="text-base font-medium text-gray-200">
                     No account?
                     <a className="underline ml-3" href="/register">
@@ -149,7 +154,7 @@ const Login = () => {
                   </p>
                   <input
                     type="submit"
-                    className="bg-custom px-4 py-3 text-base font-semibold text-white cursor-pointer hover:font-bold mt-5"
+                    className="bg-custom text-base font-medium text-white cursor-pointer hover:scale-105 px-3 py-2 transition-all"
                     value="Sign In"
                   />
                 </div>

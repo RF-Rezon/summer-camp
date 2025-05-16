@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import React from "react";
 
 const HomeExtra = () => {
   return (
@@ -19,9 +18,9 @@ const HomeExtra = () => {
                   />
                 </div>
                 <div className="w-10/12 pl-4 md:pl-6">
-                  <p className="font-semibold text-gray-800 mb-3">Nobius Mayar</p>
+                  <p className="font-semibold text-gray-800 mb-3 text-lg uppercase">Nobius Mayar</p>
                   <motion.p
-                    className="text-gray-700 font-medium"
+                    className="text-gray-700 font-medium text-lg italic"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -45,9 +44,9 @@ const HomeExtra = () => {
                   />
                 </div>
                 <div className="w-10/12 pl-4 md:pl-6">
-                  <p className="font-semibold text-gray-800 mb-3">Maria Saxon</p>
+                  <p className="font-semibold text-gray-800 mb-3 text-lg uppercase">Maria Saxon</p>
                   <motion.p
-                    className="text-gray-700 font-medium"
+                    className="text-gray-700 font-medium text-lg italic"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -71,9 +70,9 @@ const HomeExtra = () => {
                   />
                 </div>
                 <div className="w-10/12 pl-4 md:pl-6">
-                  <p className="font-semibold text-gray-800 mb-3">Jemmy Ada</p>
+                  <p className="font-semibold text-gray-800 mb-3 text-lg uppercase">Jemmy Ada</p>
                   <motion.p
-                    className="text-gray-700 font-medium"
+                    className="text-gray-700 font-medium text-lg italic"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -97,9 +96,9 @@ const HomeExtra = () => {
                   />
                 </div>
                 <div className="w-10/12 pl-4 md:pl-6">
-                  <p className="font-semibold text-gray-800 mb-3">Nobius Mayar</p>
+                  <p className="font-semibold text-gray-800 mb-3 text-lg uppercase">Nobius Mayar</p>
                   <motion.p
-                    className="text-gray-700 font-medium"
+                    className="text-gray-700 font-medium text-lg italic"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
