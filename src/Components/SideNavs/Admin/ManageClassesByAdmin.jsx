@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useState } from "react";
+import { useState } from "react";
+import UseAuth from "../../../Hooks/useAuth";
 import Spninner from "../../../Utils/Spninner";
 import "./popupbtn.css";
-import UseAuth from "../../../Hooks/useAuth";
 
 const ManageClassesByAdmin = () => {
   const token = localStorage.getItem("access-token");
@@ -94,7 +94,7 @@ const ManageClassesByAdmin = () => {
     <div className="mt-80 md:mt-0">
       <div className="dash_classes ">
         <div className="overflow-x-auto min-h-screen py-8">
-          <table className="table">
+          <table className="custom-table">
             {/* head */}
             <thead>
               <tr className="text-sm">

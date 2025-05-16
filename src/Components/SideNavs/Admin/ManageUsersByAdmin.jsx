@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
-import Spninner from "../../../Utils/Spninner";
 import UseAuth from "../../../Hooks/useAuth";
+import Spninner from "../../../Utils/Spninner";
 
 const ManageUsersByAdmin = () => {
 
@@ -49,7 +48,7 @@ const ManageUsersByAdmin = () => {
       <div className="dash_classes ">
         <div>
           <div className="overflow-x-auto min-h-screen py-8">
-            <table className="table">
+            <table className="custom-table">
               {/* head */}
               <thead>
                 <tr className="text-sm">

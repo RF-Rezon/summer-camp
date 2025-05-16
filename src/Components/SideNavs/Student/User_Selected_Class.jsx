@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import UseAuth from "../../../Hooks/useAuth";
@@ -43,7 +42,7 @@ const User_Selected_Class = () => {
     <div className="mt-96 md:mt-10" >
       <div className="dash_classes">
         <div className="overflow-x-auto min-h-screen">
-          <table className="table">
+          <table className="custom-table">
             {/* head */}
             <thead>
               <tr className="text-sm">

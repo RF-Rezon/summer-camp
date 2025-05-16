@@ -24,3 +24,27 @@
 /* .bgWhite{
   background-color: #ffffff;
 } */
+/* popupbtn.css */
+
+.custom-table {
+  background-color: white;
+  border-collapse: collapse;
+  width: 100%;
+  color: black;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+.custom-table th {
+  background-color: white;
+  font-weight: bold;
+}
+
+.custom-table img {
+  border: 1px solid black;
+}

@@ -42,7 +42,7 @@ const Classes = () => {
       });
     } else {
       Swal.fire({
-        title: `Hello! ${user.displayName}`,
+        title: `Hello! ${user?.displayName}`,
         text: "Do you want to take this class?",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",

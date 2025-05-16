@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React from "react";
 import UseAuth from "../../../Hooks/useAuth";
 import Spninner from "../../../Utils/Spninner";
 import MyClassesBanner from "./MyClassesBanner";
@@ -22,7 +21,7 @@ const My_Classes = () => {
   if (isLoading) return <Spninner />;
 
   return (
-    <div className="w-5/6 flex flex-col items-center h-screen space-y-10 min-h-screen mt-64 md:mt-0">
+    <div className="w-5/6 flex flex-col items-center h-screen space-y-10 min-h-screen mt-80 md:mt-0">
       {addedNewClasses.map((singleClass) => (
         <MyClassesBanner singleClass={singleClass} key={singleClass._id} />
       ))}
