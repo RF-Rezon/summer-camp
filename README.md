@@ -7,6 +7,7 @@
   
 # Features
 - **Admin Email** : a_alice@gmail.com  ||  **Admin Password** : Ac@123456
+-  **Instructor Email** : cisco@gmail.com ||  **Instructor Password** : Cisco@1122
 - Three characters can role-play this website. Admin, Instructor, Normal user.
 - An instructor who can add courses. A normal (authenticated) user can take those courses.
 - Admin who looks after the overall scenario through the dashboard can control instructors and users.
